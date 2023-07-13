@@ -33,6 +33,7 @@ def json2object(json_string: str, class_name: str):
     json_string = json_string.replace("NaN", f"{NAN}")
 
     # We rely on the Object keyword to handle pydantic conversions
+    # and fix some json naming issues in the stix
     # if Deltares somehow decides to use Object in the json we
     # have a problem and need to rename all dataclasses in the
     # shared/dataclasses.py file to some other postfix
