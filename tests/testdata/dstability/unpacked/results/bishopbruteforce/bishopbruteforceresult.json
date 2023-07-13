@@ -1,0 +1,1817 @@
+{
+  "Circle": {
+    "Center": {
+      "X": 12.411,
+      "Z": 6.438
+    },
+    "Radius": 11.295142857
+  },
+  "Id": "51",
+  "FactorOfSafety": 1.1942352306237944,
+  "Points": [
+    {
+      "X": 2.9959012531483795,
+      "Z": 0.19811476491184177
+    },
+    {
+      "X": 3.5489279169265542,
+      "Z": -0.56513719374741367
+    },
+    {
+      "X": 4.0,
+      "Z": -1.10092108726694
+    },
+    {
+      "X": 4.2945705934097047,
+      "Z": -1.4171782823736363
+    },
+    {
+      "X": 4.37,
+      "Z": -1.4943748751580142
+    },
+    {
+      "X": 4.96,
+      "Z": -2.0509841064781211
+    },
+    {
+      "X": 5.0,
+      "Z": -2.08592697998042
+    },
+    {
+      "X": 5.3216234999516452,
+      "Z": -2.3552356388646993
+    },
+    {
+      "X": 5.5,
+      "Z": -2.4961105410688829
+    },
+    {
+      "X": 6.0,
+      "Z": -2.8614263887638858
+    },
+    {
+      "X": 6.5171755646257292,
+      "Z": -3.1975116981415832
+    },
+    {
+      "X": 7.0343511292514584,
+      "Z": -3.4953729961537521
+    },
+    {
+      "X": 7.467,
+      "Z": -3.7176445467551753
+    },
+    {
+      "X": 7.5,
+      "Z": -3.7336434837266159
+    },
+    {
+      "X": 8.5,
+      "Z": -4.15843011395999
+    },
+    {
+      "X": 8.606,
+      "Z": -4.1969530868752836
+    },
+    {
+      "X": 8.647,
+      "Z": -4.2115331428207758
+    },
+    {
+      "X": 9.3235,
+      "Z": -4.4269710496640586
+    },
+    {
+      "X": 10.0,
+      "Z": -4.5968235672365028
+    },
+    {
+      "X": 11.0,
+      "Z": -4.7686645867554249
+    },
+    {
+      "X": 12.0,
+      "Z": -4.8496627855388263
+    },
+    {
+      "X": 12.411,
+      "Z": -4.857142857
+    },
+    {
+      "X": 13.0,
+      "Z": -4.8417753151398424
+    },
+    {
+      "X": 13.358453854151414,
+      "Z": -4.8173357726143271
+    },
+    {
+      "X": 14.217726927075706,
+      "Z": -4.7117080666274722
+    },
+    {
+      "X": 15.077,
+      "Z": -4.5380054737613049
+    },
+    {
+      "X": 15.274,
+      "Z": -4.4882748986119756
+    },
+    {
+      "X": 15.5,
+      "Z": -4.4265446825920014
+    },
+    {
+      "X": 15.89520295202952,
+      "Z": -4.306327896574401
+    },
+    {
+      "X": 16.2,
+      "Z": -4.2026640375513287
+    },
+    {
+      "X": 16.5,
+      "Z": -4.0910232766405317
+    },
+    {
+      "X": 17.182122316608339,
+      "Z": -3.8
+    }
+  ],
+  "Slices": [
+    {
+      "ArcLength": 0.94254551255990182,
+      "BottomAngle": -54.0741785607026,
+      "BottomLeft": {
+        "X": 2.9959012531483795,
+        "Z": 0.19811476491184177
+      },
+      "BottomRight": {
+        "X": 3.5489279169265542,
+        "Z": -0.56513719374741367
+      },
+      "TopLeft": {
+        "X": 2.9959012531483795,
+        "Z": 0.19811476491184538
+      },
+      "TopRight": {
+        "X": 3.5489279169265542,
+        "Z": 0.18263001832605649
+      },
+      "CohesionInput": 0.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 6.3560213026245274,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 0.0,
+      "Label": "Slice 1",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 3.8121657326426854,
+      "Ocr": "NaN",
+      "PhiInput": 30.0,
+      "PiezometricPorePressure": 0.0,
+      "Pop": "NaN",
+      "ShearStress": 2.2009549119367215,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -1.60386277115493,
+      "TotalPorePressure": 0.0,
+      "TotalStress": 6.3560213026245274,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 3.5150492558934503,
+      "Width": 0.55302666377817467,
+      "YieldStress": "NaN",
+      "CohesionOutput": 0.0,
+      "DilatancyInput": 30.0,
+      "DilatancyOutput": 30.0,
+      "PhiOutput": 30.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 999.0,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.70037875801823168,
+      "BottomAngle": -49.906248125889846,
+      "BottomLeft": {
+        "X": 3.5489279169265542,
+        "Z": -0.56513719374741367
+      },
+      "BottomRight": {
+        "X": 4.0,
+        "Z": -1.10092108726694
+      },
+      "TopLeft": {
+        "X": 3.5489279169265542,
+        "Z": 0.18263001832605649
+      },
+      "TopRight": {
+        "X": 4.0,
+        "Z": 0.17
+      },
+      "CohesionInput": 0.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 15.110133562729743,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 2.5733564135878879,
+      "Label": "Slice 2",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 9.59797147321949,
+      "Ocr": "NaN",
+      "PhiInput": 30.0,
+      "PiezometricPorePressure": 2.5733564135878884,
+      "Pop": "NaN",
+      "ShearStress": 5.541391413737621,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -1.6038627711549305,
+      "TotalPorePressure": 2.5733564135878884,
+      "TotalStress": 17.683489976317631,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 7.976528659625993,
+      "Width": 0.45107208307344582,
+      "YieldStress": "NaN",
+      "CohesionOutput": 0.0,
+      "DilatancyInput": 30.0,
+      "DilatancyOutput": 30.0,
+      "PhiOutput": 30.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 6.871760896759155,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.43219260516406405,
+      "BottomAngle": -47.033353893771839,
+      "BottomLeft": {
+        "X": 4.0,
+        "Z": -1.10092108726694
+      },
+      "BottomRight": {
+        "X": 4.2945705934097047,
+        "Z": -1.4171782823736363
+      },
+      "TopLeft": {
+        "X": 4.0,
+        "Z": 0.17
+      },
+      "TopRight": {
+        "X": 4.2945705934097047,
+        "Z": 0.13895066718113924
+      },
+      "CohesionInput": 0.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 18.725926969838056,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 6.6622565616219322,
+      "Label": "Slice 3",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 12.326999145824967,
+      "Ocr": "NaN",
+      "PhiInput": 30.0,
+      "PiezometricPorePressure": 6.6622565616219376,
+      "Pop": "NaN",
+      "ShearStress": 7.1169962751423306,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -6.0170667030115581,
+      "TotalPorePressure": 6.6622565616219376,
+      "TotalStress": 25.388183531459994,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 7.478612288456663,
+      "Width": 0.29457059340970471,
+      "YieldStress": "NaN",
+      "CohesionOutput": 0.0,
+      "DilatancyInput": 30.0,
+      "DilatancyOutput": 30.0,
+      "PhiOutput": 30.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 3.810748399830342,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.107930113110666,
+      "BottomAngle": -45.663371814750256,
+      "BottomLeft": {
+        "X": 4.2945705934097047,
+        "Z": -1.4171782823736363
+      },
+      "BottomRight": {
+        "X": 4.37,
+        "Z": -1.4943748751580142
+      },
+      "TopLeft": {
+        "X": 4.2945705934097047,
+        "Z": 0.13895066718113924
+      },
+      "TopRight": {
+        "X": 4.37,
+        "Z": 0.131
+      },
+      "CohesionInput": 3.34,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 20.101556065831609,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 8.5473086018515,
+      "Label": "Slice 4",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 12.033639063211115,
+      "Ocr": "NaN",
+      "PhiInput": 26.78,
+      "PiezometricPorePressure": 8.54730860185149,
+      "Pop": "NaN",
+      "ShearStress": 9.41335706811036,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -6.0170667030115519,
+      "TotalPorePressure": 8.54730860185149,
+      "TotalStress": 28.6488646676831,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 2.1609668613690167,
+      "Width": 0.0754294065902954,
+      "YieldStress": "NaN",
+      "CohesionOutput": 3.3400000000000003,
+      "DilatancyInput": 26.78,
+      "DilatancyOutput": 26.78,
+      "PhiOutput": 26.78,
+      "SuOutput": "NaN",
+      "UpliftFactor": 3.3517994964493587,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.81111887932087989,
+      "BottomAngle": -43.331942978877244,
+      "BottomLeft": {
+        "X": 4.37,
+        "Z": -1.4943748751580142
+      },
+      "BottomRight": {
+        "X": 4.96,
+        "Z": -2.0509841064781211
+      },
+      "TopLeft": {
+        "X": 4.37,
+        "Z": 0.131
+      },
+      "TopRight": {
+        "X": 4.96,
+        "Z": 0.06782300884955754
+      },
+      "CohesionInput": 3.34,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 21.353228111588319,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 11.575485496092632,
+      "Label": "Slice 5",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 13.379500745196424,
+      "Ocr": "NaN",
+      "PhiInput": 26.78,
+      "PiezometricPorePressure": 11.575485496092636,
+      "Pop": "NaN",
+      "ShearStress": 10.092611158751437,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -6.1119229157564883,
+      "TotalPorePressure": 11.575485496092636,
+      "TotalStress": 32.928713607680955,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 19.427941028531759,
+      "Width": 0.58999999999999986,
+      "YieldStress": "NaN",
+      "CohesionOutput": 3.3400000000000003,
+      "DilatancyInput": 26.78,
+      "DilatancyOutput": 26.78,
+      "PhiOutput": 26.78,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.8446939542014209,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.053113128401532421,
+      "BottomAngle": -41.139547470521336,
+      "BottomLeft": {
+        "X": 4.96,
+        "Z": -2.0509841064781211
+      },
+      "BottomRight": {
+        "X": 5.0,
+        "Z": -2.08592697998042
+      },
+      "TopLeft": {
+        "X": 4.96,
+        "Z": 0.06782300884955754
+      },
+      "TopRight": {
+        "X": 5.0,
+        "Z": 0.063539823008849555
+      },
+      "CohesionInput": 3.34,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 22.547856272751879,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 14.357231252552097,
+      "Label": "Slice 6",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 14.683061635305895,
+      "Ocr": "NaN",
+      "PhiInput": 26.78,
+      "PiezometricPorePressure": 14.357231252552097,
+      "Pop": "NaN",
+      "ShearStress": 10.750516112030462,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -6.1119229157565105,
+      "TotalPorePressure": 14.357231252552097,
+      "TotalStress": 36.905087525303976,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 1.4762035010121604,
+      "Width": 0.040000000000000036,
+      "YieldStress": "NaN",
+      "CohesionOutput": 3.3400000000000003,
+      "DilatancyInput": 26.78,
+      "DilatancyOutput": 26.78,
+      "PhiOutput": 26.78,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.5704877825063828,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.41948638770667518,
+      "BottomAngle": -39.94083124739403,
+      "BottomLeft": {
+        "X": 5.0,
+        "Z": -2.08592697998042
+      },
+      "BottomRight": {
+        "X": 5.3216234999516452,
+        "Z": -2.3552356388646993
+      },
+      "TopLeft": {
+        "X": 5.0,
+        "Z": 0.063539823008849555
+      },
+      "TopRight": {
+        "X": 5.3216234999516452,
+        "Z": 0.029100492483053918
+      },
+      "CohesionInput": 3.34,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 23.617895488321317,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 15.412765288556548,
+      "Label": "Slice 7",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 15.714313717753495,
+      "Ocr": "NaN",
+      "PhiInput": 26.78,
+      "PiezometricPorePressure": 15.41276528855655,
+      "Pop": "NaN",
+      "ShearStress": 11.270987275494575,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -6.1119229157564883,
+      "TotalPorePressure": 15.41276528855655,
+      "TotalStress": 39.030660776877866,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 12.553177724484858,
+      "Width": 0.32162349995164519,
+      "YieldStress": "NaN",
+      "CohesionOutput": 3.3400000000000003,
+      "DilatancyInput": 26.78,
+      "DilatancyOutput": 26.78,
+      "PhiOutput": 26.78,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.5323593817299481,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.22729697279228994,
+      "BottomAngle": -38.300322644324787,
+      "BottomLeft": {
+        "X": 5.3216234999516452,
+        "Z": -2.3552356388646993
+      },
+      "BottomRight": {
+        "X": 5.5,
+        "Z": -2.4961105410688829
+      },
+      "TopLeft": {
+        "X": 5.3216234999516452,
+        "Z": 0.029100492483053918
+      },
+      "TopRight": {
+        "X": 5.5,
+        "Z": 0.01
+      },
+      "CohesionInput": 1.44,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 24.895302527821741,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 16.820745324107328,
+      "Label": "Slice 8",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 18.08167430054726,
+      "Ocr": "NaN",
+      "PhiInput": 26.11,
+      "PiezometricPorePressure": 16.820745324107328,
+      "Pop": "NaN",
+      "ShearStress": 10.302034413665378,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -6.1119229157564883,
+      "TotalPorePressure": 16.820745324107328,
+      "TotalStress": 41.716047851929069,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 7.4411626116767975,
+      "Width": 0.17837650004835481,
+      "YieldStress": "NaN",
+      "CohesionOutput": 1.44,
+      "DilatancyInput": 26.11,
+      "DilatancyOutput": 26.11,
+      "PhiOutput": 26.11,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.4800356374305266,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.6192379741077888,
+      "BottomAngle": -36.153048157226429,
+      "BottomLeft": {
+        "X": 5.5,
+        "Z": -2.4961105410688829
+      },
+      "BottomRight": {
+        "X": 6.0,
+        "Z": -2.8614263887638858
+      },
+      "TopLeft": {
+        "X": 5.5,
+        "Z": 0.01
+      },
+      "TopRight": {
+        "X": 6.0,
+        "Z": -0.2
+      },
+      "CohesionInput": 1.44,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 24.730443032269349,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 18.484172393011232,
+      "Label": "Slice 9",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 18.347298395944776,
+      "Ocr": "NaN",
+      "PhiInput": 26.11,
+      "PiezometricPorePressure": 18.484172393011228,
+      "Pop": "NaN",
+      "ShearStress": 10.432219806643079,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -22.782405730481692,
+      "TotalPorePressure": 18.484172393011228,
+      "TotalStress": 43.214615425280577,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 21.607307712640289,
+      "Width": 0.5,
+      "YieldStress": "NaN",
+      "CohesionOutput": 1.44,
+      "DilatancyInput": 26.11,
+      "DilatancyOutput": 26.11,
+      "PhiOutput": 26.11,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.3379253615714926,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.6167851326235454,
+      "BottomAngle": -33.017729499593351,
+      "BottomLeft": {
+        "X": 6.0,
+        "Z": -2.8614263887638858
+      },
+      "BottomRight": {
+        "X": 6.5171755646257292,
+        "Z": -3.1975116981415832
+      },
+      "TopLeft": {
+        "X": 6.0,
+        "Z": -0.2
+      },
+      "TopRight": {
+        "X": 6.5171755646257292,
+        "Z": -0.31669060115277192
+      },
+      "CohesionInput": 1.44,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 24.612181670317213,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 20.695857342352138,
+      "Label": "Slice 10",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 18.811097576689857,
+      "Ocr": "NaN",
+      "PhiInput": 26.11,
+      "PiezometricPorePressure": 20.695857342352141,
+      "Pop": "NaN",
+      "ShearStress": 10.659533064943959,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -12.714765229887703,
+      "TotalPorePressure": 20.695857342352141,
+      "TotalStress": 45.308039012669354,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 23.432210658461841,
+      "Width": 0.51717556462572922,
+      "YieldStress": "NaN",
+      "CohesionOutput": 1.44,
+      "DilatancyInput": 26.11,
+      "DilatancyOutput": 26.11,
+      "PhiOutput": 26.11,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.1892322827308379,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.59681816116756692,
+      "BottomAngle": -29.939294861760356,
+      "BottomLeft": {
+        "X": 6.5171755646257292,
+        "Z": -3.1975116981415832
+      },
+      "BottomRight": {
+        "X": 7.0343511292514584,
+        "Z": -3.4953729961537521
+      },
+      "TopLeft": {
+        "X": 6.5171755646257292,
+        "Z": -0.31669060115277192
+      },
+      "TopRight": {
+        "X": 7.0343511292514584,
+        "Z": -0.43338120230554383
+      },
+      "CohesionInput": 1.44,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 25.31251422614077,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 22.555930662574305,
+      "Label": "Slice 11",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 19.9111605699319,
+      "Ocr": "NaN",
+      "PhiInput": 26.11,
+      "PiezometricPorePressure": 22.555930662574305,
+      "Pop": "NaN",
+      "ShearStress": 11.198686460877857,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -12.714765229887703,
+      "TotalPorePressure": 22.555930662574305,
+      "TotalStress": 47.868444888715075,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 24.756390013076821,
+      "Width": 0.51717556462572922,
+      "YieldStress": "NaN",
+      "CohesionOutput": 1.44,
+      "DilatancyInput": 26.11,
+      "DilatancyOutput": 26.11,
+      "PhiOutput": 26.11,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.122211031981061,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.48640485972772612,
+      "BottomAngle": -27.191643010863594,
+      "BottomLeft": {
+        "X": 7.0343511292514584,
+        "Z": -3.4953729961537521
+      },
+      "BottomRight": {
+        "X": 7.467,
+        "Z": -3.7176445467551753
+      },
+      "TopLeft": {
+        "X": 7.0343511292514584,
+        "Z": -0.43338120230554383
+      },
+      "TopRight": {
+        "X": 7.467,
+        "Z": -0.531
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 26.385167225797296,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 23.959850726656956,
+      "Label": "Slice 12",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 22.125269420908847,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 23.959850726656953,
+      "Pop": "NaN",
+      "ShearStress": 9.9012819543501855,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -12.714765229887711,
+      "TotalPorePressure": 23.959850726656953,
+      "TotalStress": 50.345017952454249,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 21.781715164944366,
+      "Width": 0.43264887074854119,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.10122419070174,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.036673777883061809,
+      "BottomAngle": -25.864862401480622,
+      "BottomLeft": {
+        "X": 7.467,
+        "Z": -3.7176445467551753
+      },
+      "BottomRight": {
+        "X": 7.5,
+        "Z": -3.7336434837266159
+      },
+      "TopLeft": {
+        "X": 7.467,
+        "Z": -0.531
+      },
+      "TopRight": {
+        "X": 7.5,
+        "Z": -0.54
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 27.152446845225064,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 24.566091262462574,
+      "Label": "Slice 13",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 23.06514226834739,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 24.566091262462578,
+      "Pop": "NaN",
+      "ShearStress": 10.067006895788891,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -15.255118703057631,
+      "TotalPorePressure": 24.566091262462578,
+      "TotalStress": 51.718538107687642,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 1.706711757553711,
+      "Width": 0.033000000000000362,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.1052815262766074,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 1.0864822507639163,
+      "BottomAngle": -23.015136369741938,
+      "BottomLeft": {
+        "X": 7.5,
+        "Z": -3.7336434837266159
+      },
+      "BottomRight": {
+        "X": 8.5,
+        "Z": -4.15843011395999
+      },
+      "TopLeft": {
+        "X": 7.5,
+        "Z": -0.54
+      },
+      "TopRight": {
+        "X": 8.5,
+        "Z": -0.96
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 27.02144094668769,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 25.480341764541109,
+      "Label": "Slice 14",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 23.418085052433788,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 25.480341764541109,
+      "Pop": "NaN",
+      "ShearStress": 10.129240231269684,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -22.782405730481685,
+      "TotalPorePressure": 25.480341764541109,
+      "TotalStress": 52.5017827112288,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 52.5017827112288,
+      "Width": 1.0,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.0604818882096474,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.11278306363205612,
+      "BottomAngle": -19.972373081526261,
+      "BottomLeft": {
+        "X": 8.5,
+        "Z": -4.15843011395999
+      },
+      "BottomRight": {
+        "X": 8.606,
+        "Z": -4.1969530868752836
+      },
+      "TopLeft": {
+        "X": 8.5,
+        "Z": -0.96
+      },
+      "TopRight": {
+        "X": 8.606,
+        "Z": -0.98402666666666661
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 26.991777191379349,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 26.416892994512374,
+      "Label": "Slice 15",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 23.883942137868988,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 26.416892994512381,
+      "Pop": "NaN",
+      "ShearStress": 10.211383404586119,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -12.771242564901444,
+      "TotalPorePressure": 26.416892994512381,
+      "TotalStress": 53.408670185891729,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 5.6613190397045168,
+      "Width": 0.10599999999999987,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.0217619913510037,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.043515262051074852,
+      "BottomAngle": -19.57595211957377,
+      "BottomLeft": {
+        "X": 8.606,
+        "Z": -4.1969530868752836
+      },
+      "BottomRight": {
+        "X": 8.647,
+        "Z": -4.2115331428207758
+      },
+      "TopLeft": {
+        "X": 8.606,
+        "Z": -0.98402666666666661
+      },
+      "TopRight": {
+        "X": 8.647,
+        "Z": -0.99332
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 27.163034631865312,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 26.499796073587618,
+      "Label": "Slice 16",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 24.110136247206142,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 26.499796073587628,
+      "Pop": "NaN",
+      "ShearStress": 10.251267528939581,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -12.771242564901387,
+      "TotalPorePressure": 26.499796073587628,
+      "TotalStress": 53.66283070545294,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 2.2001760589235904,
+      "Width": 0.041000000000000369,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.0250280627230461,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.70997587403024731,
+      "BottomAngle": -17.66457464821584,
+      "BottomLeft": {
+        "X": 8.647,
+        "Z": -4.2115331428207758
+      },
+      "BottomRight": {
+        "X": 9.3235,
+        "Z": -4.4269710496640586
+      },
+      "TopLeft": {
+        "X": 8.647,
+        "Z": -0.99332
+      },
+      "TopRight": {
+        "X": 9.3235,
+        "Z": -1.1466599999999998
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 27.030769487945044,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 26.76133675523759,
+      "Label": "Slice 17",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 24.288430305160677,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 26.761336755237593,
+      "Pop": "NaN",
+      "ShearStress": 10.282705581856964,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -12.771242564901446,
+      "TotalPorePressure": 26.761336755237593,
+      "TotalStress": 53.792106243182637,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 36.390359873513,
+      "Width": 0.676499999999999,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.0100679848384151,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.6974970449583987,
+      "BottomAngle": -14.094220950347118,
+      "BottomLeft": {
+        "X": 9.3235,
+        "Z": -4.4269710496640586
+      },
+      "BottomRight": {
+        "X": 10.0,
+        "Z": -4.5968235672365028
+      },
+      "TopLeft": {
+        "X": 9.3235,
+        "Z": -1.1466599999999998
+      },
+      "TopRight": {
+        "X": 10.0,
+        "Z": -1.3
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 26.6042903192591,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 27.016842569719252,
+      "Label": "Slice 18",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 24.436716202970121,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 27.016842569719238,
+      "Pop": "NaN",
+      "ShearStress": 10.308852386499346,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -12.771242564901449,
+      "TotalPorePressure": 27.016842569719238,
+      "TotalStress": 53.621132888978337,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 36.274696399393889,
+      "Width": 0.67650000000000077,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 1.9847298125458031,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 1.0146572504985625,
+      "BottomAngle": -9.75053385701897,
+      "BottomLeft": {
+        "X": 10.0,
+        "Z": -4.5968235672365028
+      },
+      "BottomRight": {
+        "X": 11.0,
+        "Z": -4.7686645867554249
+      },
+      "TopLeft": {
+        "X": 10.0,
+        "Z": -1.3
+      },
+      "TopRight": {
+        "X": 11.0,
+        "Z": -1.74
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 23.957817829971148,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 26.667736847337387,
+      "Label": "Slice 19",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 22.522851101755997,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 26.667736847337387,
+      "Pop": "NaN",
+      "ShearStress": 9.9713863317189588,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -23.749494492866759,
+      "TotalPorePressure": 26.667736847337387,
+      "TotalStress": 50.625554677308536,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 50.625554677308536,
+      "Width": 1.0,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 1.89838211495488,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 1.003274991319008,
+      "BottomAngle": -4.6307456049851847,
+      "BottomLeft": {
+        "X": 11.0,
+        "Z": -4.7686645867554249
+      },
+      "BottomRight": {
+        "X": 12.0,
+        "Z": -4.8496627855388263
+      },
+      "TopLeft": {
+        "X": 11.0,
+        "Z": -1.74
+      },
+      "TopRight": {
+        "X": 12.0,
+        "Z": -1.91
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 21.284749086443046,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 25.492031886757758,
+      "Label": "Slice 20",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 20.630997454450103,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 25.492031886757754,
+      "Pop": "NaN",
+      "ShearStress": 9.6378014901472149,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -9.6480453160981536,
+      "TotalPorePressure": 25.492031886757754,
+      "TotalStress": 46.7767809732008,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 46.7767809732008,
+      "Width": 1.0,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 1.8349569458015527,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.41106806184507194,
+      "BottomAngle": -1.0426501597247868,
+      "BottomLeft": {
+        "X": 12.0,
+        "Z": -4.8496627855388263
+      },
+      "BottomRight": {
+        "X": 12.411,
+        "Z": -4.857142857
+      },
+      "TopLeft": {
+        "X": 12.0,
+        "Z": -1.91
+      },
+      "TopRight": {
+        "X": 12.411,
+        "Z": -1.89767
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 21.514896540772931,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 24.221613526565672,
+      "Label": "Slice 21",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 21.366028090405216,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 24.221613526565683,
+      "Pop": "NaN",
+      "ShearStress": 9.7674072229134,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": 1.7183580016554525,
+      "TotalPorePressure": 24.221613526565683,
+      "TotalStress": 45.736510067338614,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 18.797705637676152,
+      "Width": 0.41099999999999959,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 1.888251995152012,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.58920044241567249,
+      "BottomAngle": 1.4945595533521738,
+      "BottomLeft": {
+        "X": 12.411,
+        "Z": -4.857142857
+      },
+      "BottomRight": {
+        "X": 13.0,
+        "Z": -4.8417753151398424
+      },
+      "TopLeft": {
+        "X": 12.411,
+        "Z": -1.89767
+      },
+      "TopRight": {
+        "X": 13.0,
+        "Z": -1.88
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 22.724342775418833,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 22.974984821082405,
+      "Label": "Slice 22",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 22.943838064673844,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 22.974984821082394,
+      "Pop": "NaN",
+      "ShearStress": 10.045617691807891,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": 1.7183580016554632,
+      "TotalPorePressure": 22.974984821082394,
+      "TotalStress": 45.699327596501227,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 26.91690395433924,
+      "Width": 0.58900000000000041,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 1.9890906545699405,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.35928603757293337,
+      "BottomAngle": 3.9004153075983519,
+      "BottomLeft": {
+        "X": 13.0,
+        "Z": -4.8417753151398424
+      },
+      "BottomRight": {
+        "X": 13.358453854151414,
+        "Z": -4.8173357726143271
+      },
+      "TopLeft": {
+        "X": 13.0,
+        "Z": -1.88
+      },
+      "TopRight": {
+        "X": 13.358453854151414,
+        "Z": -1.9419571177854391
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 23.179606050336446,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 21.635263035258106,
+      "Label": "Slice 23",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 23.7614198917291,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 21.635263035258106,
+      "Pop": "NaN",
+      "ShearStress": 10.189779426854654,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -9.8064234466536977,
+      "TotalPorePressure": 21.635263035258106,
+      "TotalStress": 44.814869085594552,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 16.0640625470224,
+      "Width": 0.35845385415141351,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.0713808291843545,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.86574096941568024,
+      "BottomAngle": 7.0080296252387964,
+      "BottomLeft": {
+        "X": 13.358453854151414,
+        "Z": -4.8173357726143271
+      },
+      "BottomRight": {
+        "X": 14.217726927075706,
+        "Z": -4.7117080666274722
+      },
+      "TopLeft": {
+        "X": 13.358453854151414,
+        "Z": -1.9419571177854391
+      },
+      "TopRight": {
+        "X": 14.217726927075706,
+        "Z": -2.0904785588927193
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 22.488855462493234,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 19.526341309445513,
+      "Label": "Slice 24",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 23.533710946888817,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 19.526341309445513,
+      "Pop": "NaN",
+      "ShearStress": 10.149628196130657,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -9.8064234466537119,
+      "TotalPorePressure": 19.526341309445513,
+      "TotalStress": 42.015196771938747,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 36.102527239742614,
+      "Width": 0.85927307292429234,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.1517188553707527,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.87665432447526814,
+      "BottomAngle": 11.428366026213773,
+      "BottomLeft": {
+        "X": 14.217726927075706,
+        "Z": -4.7117080666274722
+      },
+      "BottomRight": {
+        "X": 15.077,
+        "Z": -4.5380054737613049
+      },
+      "TopLeft": {
+        "X": 14.217726927075706,
+        "Z": -2.0904785588927193
+      },
+      "TopRight": {
+        "X": 15.077,
+        "Z": -2.239
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 21.420586300480124,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 16.080324422456073,
+      "Label": "Slice 25",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 23.126679544220533,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 16.080324422456073,
+      "Pop": "NaN",
+      "ShearStress": 10.077857577844627,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -9.806423446653719,
+      "TotalPorePressure": 16.080324422456073,
+      "TotalStress": 37.5009107229362,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 32.223522794356995,
+      "Width": 0.85927307292429411,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.3320991379108253,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.20318004356895578,
+      "BottomAngle": 14.167717143519367,
+      "BottomLeft": {
+        "X": 15.077,
+        "Z": -4.5380054737613049
+      },
+      "BottomRight": {
+        "X": 15.274,
+        "Z": -4.4882748986119756
+      },
+      "TopLeft": {
+        "X": 15.077,
+        "Z": -2.239
+      },
+      "TopRight": {
+        "X": 15.274,
+        "Z": -2.4448486997635923
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 19.187535871875312,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 13.708469537136656,
+      "Label": "Slice 26",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 21.248022652014683,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 13.708469537136656,
+      "Pop": "NaN",
+      "ShearStress": 9.7465996802548212,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -46.258317669436884,
+      "TotalPorePressure": 13.708469537136656,
+      "TotalStress": 32.89600540901197,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 6.4805130655753311,
+      "Width": 0.19699999999999918,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.3996847583820866,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.23427893539512482,
+      "BottomAngle": 15.277262684939817,
+      "BottomLeft": {
+        "X": 15.274,
+        "Z": -4.4882748986119756
+      },
+      "BottomRight": {
+        "X": 15.5,
+        "Z": -4.4265446825920014
+      },
+      "TopLeft": {
+        "X": 15.274,
+        "Z": -2.4448486997635923
+      },
+      "TopRight": {
+        "X": 15.5,
+        "Z": -2.681
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 15.420188144901982,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 12.923790045805514,
+      "Label": "Slice 27",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 17.498424703155017,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 12.923790045805511,
+      "Pop": "NaN",
+      "ShearStress": 9.0854443950617423,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -46.25831766943692,
+      "TotalPorePressure": 12.923790045805511,
+      "TotalStress": 28.343978190707492,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 6.4057390710999176,
+      "Width": 0.22600000000000087,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 2.1931630032868488,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.41308285964591684,
+      "BottomAngle": 16.919236538443251,
+      "BottomLeft": {
+        "X": 15.5,
+        "Z": -4.4265446825920014
+      },
+      "BottomRight": {
+        "X": 15.89520295202952,
+        "Z": -4.306327896574401
+      },
+      "TopLeft": {
+        "X": 15.5,
+        "Z": -2.681
+      },
+      "TopRight": {
+        "X": 15.89520295202952,
+        "Z": -3.1399999999999997
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 9.459650434112147,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 12.031340000811202,
+      "Label": "Slice 28",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 11.504896086041455,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 12.0313400008112,
+      "Pop": "NaN",
+      "ShearStress": 8.028623590216327,
+      "SInput": "NaN",
+      "SurfacePorePressure": 0.0,
+      "TopAngle": -49.271265756309148,
+      "TotalPorePressure": 12.0313400008112,
+      "TotalStress": 21.490990434923347,
+      "VerticalPorePressure": 0.0,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 8.493302861919874,
+      "Width": 0.39520295202951949,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 1.7862507778413992,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.32194321878100551,
+      "BottomAngle": 18.783570451817607,
+      "BottomLeft": {
+        "X": 15.89520295202952,
+        "Z": -4.306327896574401
+      },
+      "BottomRight": {
+        "X": 16.2,
+        "Z": -4.2026640375513287
+      },
+      "TopLeft": {
+        "X": 15.89520295202952,
+        "Z": -3.1399999999999997
+      },
+      "TopRight": {
+        "X": 16.2,
+        "Z": -3.494
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 4.41293009591244,
+      "HorizontalPorePressure": -0.61467497999998955,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 10.933205436886698,
+      "Label": "Slice 29",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 6.4455827334084574,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 10.933205436886695,
+      "Pop": "NaN",
+      "ShearStress": 7.136530142288529,
+      "SInput": "NaN",
+      "SurfacePorePressure": 1.736369999999968,
+      "TopAngle": -49.271265756309148,
+      "TotalPorePressure": 10.933205436886695,
+      "TotalStress": 15.346135532799135,
+      "VerticalPorePressure": -0.52924045018449228,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 4.14821635796757,
+      "Width": 0.3047970479704798,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 1.4036263766730293,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.32009945250928212,
+      "BottomAngle": 20.412039168515982,
+      "BottomLeft": {
+        "X": 16.2,
+        "Z": -4.2026640375513287
+      },
+      "BottomRight": {
+        "X": 16.5,
+        "Z": -4.0910232766405317
+      },
+      "TopLeft": {
+        "X": 16.2,
+        "Z": -3.494
+      },
+      "TopRight": {
+        "X": 16.5,
+        "Z": -3.8
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 2.2442980203607181,
+      "HorizontalPorePressure": -1.5219430200000006,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 9.87713627611107,
+      "Label": "Slice 30",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 4.3533973658050478,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 9.8771362761110719,
+      "Pop": "NaN",
+      "ShearStress": 6.76762141333659,
+      "SInput": "NaN",
+      "SurfacePorePressure": 4.9736700000000083,
+      "TopAngle": -45.567266409857837,
+      "TotalPorePressure": 9.8771362761110719,
+      "TotalStress": 12.12143429647179,
+      "VerticalPorePressure": -1.4921010000000059,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 2.14432928894154,
+      "Width": 0.30000000000000071,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 1.2272215303730087,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    },
+    {
+      "ArcLength": 0.74161000691854129,
+      "BottomAngle": 23.105219841316234,
+      "BottomLeft": {
+        "X": 16.5,
+        "Z": -4.0910232766405317
+      },
+      "BottomRight": {
+        "X": 17.182122316608339,
+        "Z": -3.8
+      },
+      "TopLeft": {
+        "X": 16.5,
+        "Z": -3.8
+      },
+      "TopRight": {
+        "X": 17.182122316608339,
+        "Z": -3.8
+      },
+      "CohesionInput": 6.0,
+      "DegreeOfConsolidationLoadPorePressure": 0.0,
+      "DegreeOfConsolidationPorePressure": 0.0,
+      "EffectiveStress": 0.65334725605798027,
+      "HorizontalPorePressure": 0.0,
+      "HorizontalSoilQuakeStress": 0.0,
+      "HydrostaticPorePressure": 7.9020691719217977,
+      "Label": "Slice 31",
+      "LoadStress": 0.0,
+      "MInput": "NaN",
+      "NormalStress": 2.985174630283606,
+      "Ocr": "NaN",
+      "PhiInput": 10.0,
+      "PiezometricPorePressure": 7.9020691719218057,
+      "Pop": "NaN",
+      "ShearStress": 6.5263668294454176,
+      "SInput": "NaN",
+      "SurfacePorePressure": 6.4745999999999952,
+      "TopAngle": 0.0,
+      "TotalPorePressure": 7.9020691719218057,
+      "TotalStress": 8.555416427979786,
+      "VerticalPorePressure": -4.4164691511123495,
+      "VerticalSoilQuakeStress": 0.0,
+      "WaterQuakeStress": 0.0,
+      "Weight": 1.4193713222902649,
+      "Width": 0.68212231660833922,
+      "YieldStress": "NaN",
+      "CohesionOutput": 6.0000000000000009,
+      "DilatancyInput": 10.0,
+      "DilatancyOutput": 10.0,
+      "PhiOutput": 10.0,
+      "SuOutput": "NaN",
+      "UpliftFactor": 1.0826805285860444,
+      "ShearStrengthModelType": "MohrCoulombAdvanced"
+    }
+  ]
+}

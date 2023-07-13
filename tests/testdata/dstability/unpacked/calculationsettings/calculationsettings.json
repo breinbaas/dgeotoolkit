@@ -1,0 +1,124 @@
+{
+  "Id": "50",
+  "AnalysisType": "BishopBruteForce",
+  "CalculationType": "Deterministic",
+  "ModelFactorMean": 1.0,
+  "ModelFactorStandardDeviation": 0.0,
+  "Bishop": {
+    "Label": "",
+    "Notes": "",
+    "Circle": {
+      "Center": {
+        "X": "NaN",
+        "Z": "NaN"
+      },
+      "Radius": "NaN"
+    }
+  },
+  "BishopBruteForce": {
+    "SearchGrid": {
+      "Label": "",
+      "Notes": "",
+      "BottomLeft": {
+        "X": 7.741,
+        "Z": 3.636
+      },
+      "Space": 0.46699999999999997,
+      "NumberOfPointsInX": 22,
+      "NumberOfPointsInZ": 15
+    },
+    "TangentLines": {
+      "Label": "",
+      "Notes": "",
+      "BottomTangentLineZ": -7.0,
+      "Space": 0.42857142857142855,
+      "NumberOfTangentLines": 15
+    },
+    "GridEnhancements": {
+      "ExtrapolateSearchSpace": true
+    },
+    "SlipPlaneConstraints": {
+      "IsSizeConstraintsEnabled": true,
+      "MinimumSlipPlaneDepth": 1.0,
+      "MinimumSlipPlaneLength": 0.0,
+      "IsZoneAConstraintsEnabled": false,
+      "XLeftZoneA": 0.0,
+      "WidthZoneA": 0.0,
+      "IsZoneBConstraintsEnabled": false,
+      "XLeftZoneB": 0.0,
+      "WidthZoneB": 0.0
+    }
+  },
+  "UpliftVan": {
+    "Label": "",
+    "Notes": "",
+    "SlipPlane": {
+      "FirstCircleCenter": {
+        "X": "NaN",
+        "Z": "NaN"
+      },
+      "FirstCircleRadius": "NaN",
+      "SecondCircleCenter": {
+        "X": "NaN",
+        "Z": "NaN"
+      }
+    }
+  },
+  "UpliftVanParticleSwarm": {
+    "SearchAreaA": {
+      "Label": "",
+      "Notes": "",
+      "TopLeft": null,
+      "Width": 0.0,
+      "Height": 0.0
+    },
+    "SearchAreaB": {
+      "Label": "",
+      "Notes": "",
+      "TopLeft": null,
+      "Width": 0.0,
+      "Height": 0.0
+    },
+    "TangentArea": {
+      "Label": "",
+      "Notes": "",
+      "TopZ": null,
+      "Height": 0.0
+    },
+    "SlipPlaneConstraints": {
+      "IsSizeConstraintsEnabled": false,
+      "MinimumSlipPlaneDepth": 0.0,
+      "MinimumSlipPlaneLength": 0.0,
+      "IsZoneAConstraintsEnabled": false,
+      "XLeftZoneA": 0.0,
+      "WidthZoneA": 0.0,
+      "IsZoneBConstraintsEnabled": false,
+      "XLeftZoneB": 0.0,
+      "WidthZoneB": 0.0
+    },
+    "OptionsType": "Default"
+  },
+  "Spencer": {
+    "Label": "",
+    "Notes": "",
+    "SlipPlane": null,
+    "SlipPlaneConstraints": {
+      "IsEnabled": false,
+      "MinimumAngleBetweenSlices": 120.0,
+      "MinimumThrustLinePercentageInsideSlices": 80.0
+    }
+  },
+  "SpencerGenetic": {
+    "Label": "",
+    "Notes": "",
+    "SlipPlaneA": null,
+    "SlipPlaneB": null,
+    "SlipPlaneConstraints": {
+      "IsEnabled": false,
+      "MinimumAngleBetweenSlices": 0.0,
+      "MinimumThrustLinePercentageInsideSlices": 0.0
+    },
+    "OptionsType": "Default"
+  },
+  "ContentVersion": "2"
+}

@@ -1,0 +1,31 @@
+{
+  "Id": "0",
+  "Label": "Stage 1",
+  "Notes": "",
+  "Stages": [
+    {
+      "Id": "1",
+      "Label": "Stage 1",
+      "Notes": "",
+      "GeometryId": "26",
+      "DecorationsId": "36",
+      "SoilLayersId": "37",
+      "WaternetId": "38",
+      "WaternetCreatorSettingsId": "45",
+      "StateId": "46",
+      "StateCorrelationsId": "47",
+      "LoadsId": "48",
+      "ReinforcementsId": "49"
+    }
+  ],
+  "Calculations": [
+    {
+      "Id": "2",
+      "Label": "Stage 1",
+      "Notes": "",
+      "CalculationSettingsId": "50",
+      "ResultId": "51"
+    }
+  ],
+  "ContentVersion": "2"
+}

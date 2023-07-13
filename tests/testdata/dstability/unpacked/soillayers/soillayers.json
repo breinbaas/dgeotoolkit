@@ -1,0 +1,42 @@
+{
+  "Id": "37",
+  "SoilLayers": [
+    {
+      "LayerId": "27",
+      "SoilId": "22"
+    },
+    {
+      "LayerId": "28",
+      "SoilId": "19"
+    },
+    {
+      "LayerId": "29",
+      "SoilId": "17"
+    },
+    {
+      "LayerId": "30",
+      "SoilId": "19"
+    },
+    {
+      "LayerId": "31",
+      "SoilId": "16"
+    },
+    {
+      "LayerId": "32",
+      "SoilId": "16"
+    },
+    {
+      "LayerId": "33",
+      "SoilId": "19"
+    },
+    {
+      "LayerId": "34",
+      "SoilId": "17"
+    },
+    {
+      "LayerId": "35",
+      "SoilId": "20"
+    }
+  ],
+  "ContentVersion": "2"
+}
