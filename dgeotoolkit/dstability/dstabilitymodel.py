@@ -4,22 +4,22 @@ from ..shared.dataclasses import *
 
 
 class DStabilityModel(BaseModel):
-    CalculationSettings: CalculationSettingsObject = CalculationSettingsObject()
-    Decorations: DecorationsObject = DecorationsObject()
-    Geometry: GeometryObject = GeometryObject()
-    Loads: LoadsObject = LoadsObject()
-    Reinforcements: ReinforcementsObject = ReinforcementsObject()
-    BishopBruteForceResult: BishopBruteForceResultObject = (
-        BishopBruteForceResultObject()
-    )
-    Scenario: ScenarioObject = ScenarioObject()
-    SoilLayers: SoilLayersObject = SoilLayersObject()
-    StateCorrelations: StateCorrelationsObject = StateCorrelationsObject()
-    States: StatesObject = StatesObject()
-    WaternetCreatorSettings: WaternetCreatorSettingsObject = (
-        WaternetCreatorSettingsObject()
-    )
-    Waternets: WaternetsObject = WaternetsObject()
+    CalculationSettings: List[CalculationSettingsObject] = [CalculationSettingsObject()]
+    Decorations: List[DecorationsObject] = [DecorationsObject()]
+    Geometry: List[GeometryObject] = [GeometryObject()]
+    Loads: List[LoadsObject] = [LoadsObject()]
+    Reinforcements: List[ReinforcementsObject] = [ReinforcementsObject()]
+    BishopBruteForceResult: BishopBruteForceResultObject = [
+        (BishopBruteForceResultObject())
+    ]
+    Scenario: List[ScenarioObject] = [ScenarioObject()]
+    SoilLayers: List[SoilLayersObject] = [SoilLayersObject()]
+    StateCorrelations: List[StateCorrelationsObject] = [StateCorrelationsObject()]
+    States: List[StatesObject] = [StatesObject()]
+    WaternetCreatorSettings: List[WaternetCreatorSettingsObject] = [
+        (WaternetCreatorSettingsObject())
+    ]
+    Waternets: List[WaternetsObject] = [WaternetsObject()]
     NailPropertiesForSoils: NailPropertiesForSoilsObject = (
         NailPropertiesForSoilsObject()
     )

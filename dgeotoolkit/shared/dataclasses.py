@@ -36,7 +36,7 @@ class Layer(BaseModel):
 class SearchGridObject(BaseModel):
     Label: str = ""
     Notes: str = ""
-    BottomLeft: Point = Point()
+    BottomLeft: Optional[Point] = None
     Space: float = 1.0
     NumberOfPointsInX: int = 5
     NumberOfPointsInZ: int = 5
@@ -114,7 +114,7 @@ class UpliftVanParticleSwarmObject(BaseModel):
 class SpencerObject(BaseModel):
     Label: str = ""
     Notes: str = ""
-    SlipPlane: Optional[float] = 0.0  # TODO > warschijnlijk andere data!
+    SlipPlane: Optional[List[Point]] = []
 
 
 class SlipPlaneConstraintsSpencer(BaseModel):
@@ -126,23 +126,52 @@ class SlipPlaneConstraintsSpencer(BaseModel):
 class SpencerGeneticObject(BaseModel):
     Label: str = ""
     Notes: str = ""
-    SlipPlaneA: Optional[float] = 0.0  # TODO > warschijnlijk andere data!
-    SlipPlaneB: Optional[float] = 0.0  # TODO > warschijnlijk andere data!
+    SlipPlaneA: Optional[List[Point]] = []
+    SlipPlaneB: Optional[List[Point]] = []
     OptionsType: str = "Default"
     SlipPlaneConstraints: SlipPlaneConstraintsSpencer = SlipPlaneConstraintsSpencer()
     OptionsType: str = "Default"
 
 
 class ForbiddenLine(BaseModel):
-    pass
+    Label: Optional[str] = ""
+    Notes: str = ""
+    Start: Point = Point()
+    End: Point = Point()
 
 
 class Geotextile(BaseModel):
-    pass
+    Label: Optional[str] = ""
+    Notes: str = ""
+    Start: Point = Point()
+    End: Point = Point()
+    TensileStrength: float = 0.0
+    ReductionArea: float = 0.0
+
+
+class Stress(BaseModel):
+    Distance: float = 0.0
+    Stress: float = 0.0
 
 
 class Nail(BaseModel):
-    pass
+    Label: Optional[str] = ""
+    Notes: Optional[str] = ""
+    Location: Point = Point()
+    Direction: float = 0.0
+    HorizontalSpacing: float = 0.0
+    Length: float = 3.0
+    Diameter: float = 0.1
+    GroutDiameter: float = 0.0
+    CriticalAngle: float = 0.0
+    MaxPullForce: float = 0.0
+    PlasticMoment: float = (0.0,)
+    BendingStiffness: float = 0.0
+    UseFacing: bool = False
+    UseLateralStress: bool = False
+    UseShearStress: bool = False
+    LateralStresses: List[Stress] = []
+    ShearStresses: List[Stress] = []
 
 
 class StateCorrelation(BaseModel):
@@ -274,10 +303,23 @@ class Stage(BaseModel):
 
 class Calculation(BaseModel):
     Id: str = ""
-    Labe: str = ""
+    Label: str = ""
     Notes: str = ""
     CalculationSettingsId: str = ""
-    ResultId: str = ""
+    ResultId: Optional[str] = ""
+
+
+class Excavation(BaseModel):
+    Label: str = ""
+    Notes: str = ""
+    Points: List[Point] = []
+
+
+class Elevation(BaseModel):
+    Label: str = ""
+    Notes: str = ""
+    Points: List[Point] = []
+    AddedLayerId: str = ""
 
 
 #########################
@@ -334,8 +376,8 @@ class CalculationSettingsObject(BaseModel):
 #########################
 class DecorationsObject(BaseModel):
     Id: str = ""
-    Excavations: List[float] = []  # TODO
-    Berms: List[float] = []  # TODO
+    Excavations: List[Excavation] = []
+    Elevations: List[Elevation] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
@@ -632,7 +674,7 @@ class WaternetCreatorSettingsObject(BaseModel):
 class WaternetsObject(BaseModel):
     Id: str = ""
     UnitWeightWater: float = 9.81
-    PhreaticLineId: str = ""
+    PhreaticLineId: Optional[str] = None
     HeadLines: List[HeadLine] = []
     ReferenceLines: List[ReferenceLine] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
