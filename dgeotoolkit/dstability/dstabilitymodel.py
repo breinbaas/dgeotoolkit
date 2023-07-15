@@ -36,7 +36,6 @@ class DStabilityModel(BaseModel):
     SoilVisualizations: DGKTSoilVisualizations = DGKTSoilVisualizations()
 
     def serialize(self, path: str = ""):
-        # in_memory = StringIO()
         in_memory = BytesIO()
         zip = ZipFile(in_memory, "w")
 
