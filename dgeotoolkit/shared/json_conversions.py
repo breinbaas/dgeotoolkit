@@ -63,12 +63,3 @@ def json2object(json_string: str, class_name: str):
 
 def object_from_str(s: str, class_name: str):
     return json2object(s, class_name)
-
-
-def object_from_file(path: str):
-    cname = Path(path).stem.capitalize()
-    return json2object(open(path, "r").read(), cname)
-
-
-def object_to_json(instance):
-    pass

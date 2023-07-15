@@ -3,7 +3,6 @@ from pathlib import Path
 
 from dgeotoolkit.shared.json_conversions import (
     json2object,
-    object_from_file,
     object_from_str,
 )
 from dgeotoolkit.shared.dataclasses import DGKTLoads
@@ -18,11 +17,6 @@ def test_json2object():
     json_string = instance.model_dump_json()
     with open("tests/testdata/output/loads.out.json", "w") as outfile:
         outfile.write(json_string)
-
-
-def test_object_from_file():
-    instance = object_from_file("tests/testdata/loads.json")
-    assert type(instance) == DGKTLoads
 
 
 def test_object_from_str():
