@@ -183,21 +183,17 @@ class DStabilityModel(BaseModel):
                     )
 
             # now create that many entries in the dsm lists
-            calculationsettings = [
-                DGKTCalculationSettings() for i in range(num_scenarios)
-            ]
-            decorations = [DGKTDecorations() for i in range(num_scenarios)]
-            geometry = [DGKTGeometry() for i in range(num_scenarios)]
-            loads = [DGKTLoads() for i in range(num_scenarios)]
-            reinforcements = [DGKTReinforcements() for i in range(num_scenarios)]
-            scenarios = [DGKTScenario() for i in range(num_scenarios)]
-            soillayers = [DGKTSoilLayers() for i in range(num_scenarios)]
-            statecorrelations = [DGKTStateCorrelations() for i in range(num_scenarios)]
-            states = [DGKTStates() for i in range(num_scenarios)]
-            waternetcreatorsettings = [
-                DGKTWaternetCreatorSettings() for i in range(num_scenarios)
-            ]
-            waternets = [DGKTWaternets() for i in range(num_scenarios)]
+            calculationsettings = []
+            decorations = []
+            geometry = []
+            loads = []
+            reinforcements = []
+            scenarios = []
+            soillayers = []
+            statecorrelations = []
+            states = []
+            waternetcreatorsettings = []
+            waternets = []
 
             bishopresults = []
             bishopbruteforceresults = []
@@ -252,27 +248,27 @@ class DStabilityModel(BaseModel):
                         continue
 
                     if iname == "CalculationSettings":
-                        calculationsettings[index] = instance
+                        calculationsettings.append(instance)
                     elif iname == "Decorations":
-                        decorations[index] = instance
+                        decorations.append(instance)
                     elif iname == "Geometry":
-                        geometry[index] = instance
+                        geometry.append(instance)
                     elif iname == "Loads":
-                        loads[index] = instance
+                        loads.append(instance)
                     elif iname == "Reinforcements":
-                        reinforcements[index] = instance
+                        reinforcements.append(instance)
                     elif iname == "Scenario":
-                        scenarios[index] = instance
+                        scenarios.append(instance)
                     elif iname == "SoilLayers":
-                        soillayers[index] = instance
+                        soillayers.append(instance)
                     elif iname == "StateCorrelations":
-                        statecorrelations[index] = instance
+                        statecorrelations.append(instance)
                     elif iname == "States":
-                        states[index] = instance
+                        states.append(instance)
                     elif iname == "WaternetCreatorSettings":
-                        waternetcreatorsettings[index] = instance
+                        waternetcreatorsettings.append(instance)
                     elif iname == "Waternets":
-                        waternets[index] = instance
+                        waternets.append(instance)
                     else:
                         raise ValueError(f"Unknown classname '{iname}'")
 
