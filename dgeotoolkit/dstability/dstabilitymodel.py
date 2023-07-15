@@ -52,8 +52,86 @@ class DStabilityModel(BaseModel):
             zip.writestr(f"{memname.lower()}.json", instance.json_string)
 
         # result files are handled here
-        for memname in ["BishopBruteForceResults"]:
-            pass  # TODO
+        # can be optimized, ugly code but it works
+        for memname in [
+            "BishopResults",
+            "BishopBruteForceResults",
+            "SpencerResults",
+            "SpencerGeneticAlgorithmResults",
+            "UpliftVanResults",
+            "UpliftVanParticleSwarmResults",
+        ]:
+            instances = getattr(self, memname)
+            if memname == "BishopResults":
+                for i, instance in enumerate(instances):
+                    if i == 0:
+                        zip.writestr(
+                            "results/bishop/bishopresult.json", instance.json_string
+                        )
+                    else:
+                        zip.writestr(
+                            f"results/bishop/bishopresult_{i}.json",
+                            instance.json_string,
+                        )
+            elif memname == "BishopBruteForceResults":
+                for i, instance in enumerate(instances):
+                    if i == 0:
+                        zip.writestr(
+                            "results/bishopbruteforce/bishopbruteforceresult.json",
+                            instance.json_string,
+                        )
+                    else:
+                        zip.writestr(
+                            f"results/bishopbruteforce/bishopbruteforceresult_{i}.json",
+                            instance.json_string,
+                        )
+            elif memname == "SpencerResults":
+                for i, instance in enumerate(instances):
+                    if i == 0:
+                        zip.writestr(
+                            "results/spencer/spencerresult.json", instance.json_string
+                        )
+                    else:
+                        zip.writestr(
+                            f"results/bishop/bishopresult_{i}.json",
+                            instance.json_string,
+                        )
+            elif memname == "SpencerGeneticAlgorithmResults":
+                for i, instance in enumerate(instances):
+                    if i == 0:
+                        zip.writestr(
+                            "results/spencergeneticalgorithm/spencergeneticalgorithmresult.json",
+                            instance.json_string,
+                        )
+                    else:
+                        zip.writestr(
+                            f"results/spencergeneticalgorithm/spencergeneticalgorithmresult_{i}.json",
+                            instance.json_string,
+                        )
+            elif memname == "UpliftVanResults":
+                for i, instance in enumerate(instances):
+                    if i == 0:
+                        zip.writestr(
+                            "results/upliftvan/upliftvanresult.json",
+                            instance.json_string,
+                        )
+                    else:
+                        zip.writestr(
+                            f"results/upliftvan/upliftvanresult_{i}.json",
+                            instance.json_string,
+                        )
+            elif memname == "UpliftVanParticleSwarmResults":
+                for i, instance in enumerate(instances):
+                    if i == 0:
+                        zip.writestr(
+                            "results/upliftvanparticleswarm/upliftvanparticleswarmresult.json",
+                            instance.json_string,
+                        )
+                    else:
+                        zip.writestr(
+                            f"results/upliftvanparticleswarm/upliftvanparticleswarmresult_{i}.json",
+                            instance.json_string,
+                        )
 
         # the subdir files
         for memname in [
