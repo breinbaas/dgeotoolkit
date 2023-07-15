@@ -2,49 +2,55 @@ import importlib
 import json
 from pathlib import Path
 
-from ..const import NAN
+from ..const import NAN, CLASS_PREFIX
 
 import dgeotoolkit.shared.dataclasses
 
 CONVERTED_CLASSNAMES = {
-    "Nailpropertiesforsoils": "NailPropertiesForSoilsObject",
-    "Projectinfo": "ProjectInfoObject",
-    "Soilcorrelations": "SoilCorrelationsObject",
-    "Soilvisualizations": "SoilVisualizationsObject",
+    "Nailpropertiesforsoils": "NailPropertiesForSoils",
+    "Projectinfo": "ProjectInfo",
+    "Soilcorrelations": "SoilCorrelations",
+    "Soilvisualizations": "SoilVisualizations",
     "Calculationsettings": "CalculationSettings",
-    "Bishopbruteforceresult": "BishopBruteForceResultObject",
+    "Bishopbruteforceresult": "BishopBruteForceResult",
+    "Bishopresult": "BishopResult",
+    "Spencerresult": "SpencerResult",
+    "Spencergeneticalgorithmresult": "SpencerGeneticAlgorithmResult",
+    "Upliftvanresult": "UpliftVanResult",
+    "Upliftvanparticleswarmresult": "UpliftVanParticleSwarmResult",
     "Soillayers": "SoilLayers",
-    "Waternetcreatorsettings": "WaternetCreatorSettingsObject",
-    "Statecorrelations": "StateCorrelationsObject",
-    "Calculationsettings": "CalculationSettingsObject",
-    "Decorations": "DecorationsObject",
-    "Loads": "LoadsObject",
-    "Reinforcements": "ReinforcementsObject",
-    "Soillayers": "SoilLayersObject",
-    "States": "StatesObject",
-    "Waternets": "WaternetsObject",
-    "Soils": "SoilsObject",
-    "Geometry": "GeometryObject",
-    "Scenario": "ScenarioObject",
+    "Waternetcreatorsettings": "WaternetCreatorSettings",
+    "Statecorrelations": "StateCorrelations",
+    "Calculationsettings": "CalculationSettings",
+    "Decorations": "Decorations",
+    "Loads": "Loads",
+    "Reinforcements": "Reinforcements",
+    "Soillayers": "SoilLayers",
+    "States": "States",
+    "Waternets": "Waternets",
+    "Soils": "Soils",
+    "Geometry": "Geometry",
+    "Scenario": "Scenario",
 }
 
 
 def json2object(json_string: str, class_name: str):
     json_string = json_string.replace("NaN", f"{NAN}")
 
-    # We rely on the Object keyword to handle pydantic conversions
+    # We rely on the DGKT keyword to handle pydantic conversions
     # and fix some json naming issues in the stix
     # if Deltares somehow decides to use Object in the json we
     # have a problem and need to rename all dataclasses in the
     # shared/dataclasses.py file to some other postfix
-    if json_string.find("Object") > -1:
+    if json_string.find(CLASS_PREFIX) > -1:
         raise ValueError(
-            f"Deltares has added a field called containing the word 'Object' in the json, this will mess up the functionality!"
+            f"Deltares has added a field called containing the prefix 'DGKT' in the json, this will mess up the functionality!"
         )
 
     try:
         if class_name in CONVERTED_CLASSNAMES.keys():
             class_name = CONVERTED_CLASSNAMES[class_name]
+        class_name = f"{CLASS_PREFIX}{class_name}"
         _Class = getattr(
             importlib.import_module("dgeotoolkit.shared.dataclasses"), class_name
         )
