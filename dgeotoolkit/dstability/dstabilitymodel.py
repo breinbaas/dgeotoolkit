@@ -35,7 +35,15 @@ class DStabilityModel(BaseModel):
     Soils: DGKTSoils = DGKTSoils()
     SoilVisualizations: DGKTSoilVisualizations = DGKTSoilVisualizations()
 
-    def serialize(self, path: str = ""):
+    def serialize(self, path: str = "") -> Optional[bytes]:
+        """Serialize a dstability model to a file or bytesIO object (for webservices)
+
+        Args:
+            path (str, optional): The path of the file (including filename). Defaults to "".
+
+        Returns:
+            Optional[bytes]: If the path is set it will create the file, if not it will return the data as bytes
+        """
         in_memory = BytesIO()
         zip = ZipFile(in_memory, "w")
 
@@ -165,6 +173,8 @@ class DStabilityModel(BaseModel):
 
             with open(path, "wb") as out:
                 out.write(data)
+        else:
+            return data
 
     @classmethod
     def parse(cls, stix_path: str) -> "DStabilityModel":

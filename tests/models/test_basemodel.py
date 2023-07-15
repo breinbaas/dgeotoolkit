@@ -1,7 +1,6 @@
-from dgeotoolkit.models.basemodel import DGKTBaseModel
+from dgeotoolkit.models.basemodel import DGKTBaseModelPath
 
 
 def test_basemodel():
-    m = DGKTBaseModel()
-    s = m.json_string
-    i = 1
+    m = DGKTBaseModelPath(path_name="test")
+    assert m.json_string.find("path_name") == -1
