@@ -171,18 +171,6 @@ class DStabilityModel(BaseModel):
     def parse(cls, stix_path: str) -> "DStabilityModel":
         result = DStabilityModel()
         with ZipFile(stix_path) as zip:
-            # first determine if we have multiple scenarios
-            # which can be recognized with the _n postfix
-            # if we have them find the largest number
-            # this tells us how many scenarios we have
-            num_scenarios = 1
-            for f in zip.filelist:
-                if f.filename.find(".json") > -1 and f.filename.find("_") > -1:
-                    num_scenarios = max(
-                        num_scenarios, int(Path(f.filename).stem.split("_")[-1]) + 1
-                    )
-
-            # now create that many entries in the dsm lists
             calculationsettings = []
             decorations = []
             geometry = []
