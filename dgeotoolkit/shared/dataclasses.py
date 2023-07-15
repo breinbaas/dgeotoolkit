@@ -2,7 +2,7 @@ from pydantic import ConfigDict
 from typing import List, Optional, Union, Dict
 
 from ..const import NAN, CURRENT_CONTENT_VERSION
-from ..models.basemodel import DGKTBaseModel
+from ..models.basemodel import DGKTBaseModel, DGKTBaseModelPath
 
 
 ####################
@@ -112,16 +112,19 @@ class DGKTUpliftVanParticleSwarm(DGKTBaseModel):
     OptionsType: str = "Default"
 
 
-class DGKTSpencer(DGKTBaseModel):
-    Label: Optional[str] = ""
-    Notes: Optional[str] = ""
-    SlipPlane: Optional[List[DGKTPoint]] = []
-
-
 class DGKTSlipPlaneConstraintsSpencer(DGKTBaseModel):
     IsEnabled: bool = False
     MinimumAngleBetweenSlices: float = 0.0
     MinimumThrustLinePercentageInsideSlices: float = 0.0
+
+
+class DGKTSpencer(DGKTBaseModel):
+    Label: Optional[str] = ""
+    Notes: Optional[str] = ""
+    SlipPlane: Optional[List[DGKTPoint]] = []
+    SlipPlaneConstraints: DGKTSlipPlaneConstraintsSpencer = (
+        DGKTSlipPlaneConstraintsSpencer()
+    )
 
 
 class DGKTSpencerGenetic(DGKTBaseModel):
@@ -133,7 +136,6 @@ class DGKTSpencerGenetic(DGKTBaseModel):
     SlipPlaneConstraints: DGKTSlipPlaneConstraintsSpencer = (
         DGKTSlipPlaneConstraintsSpencer()
     )
-    OptionsType: str = "Default"
 
 
 class DGKTForbiddenLine(DGKTBaseModel):
@@ -475,7 +477,7 @@ class DGKTBishopBruteForce(DGKTBaseModel):
     )
 
 
-class DGKTBishopBruteForceResult(DGKTBaseModel):
+class DGKTBishopBruteForceResult(DGKTBaseModelPath):
     path_name: str = "results/bishopbruteforce"
     Circle: DGKTCircle = DGKTCircle()
     Id: str = ""
@@ -484,7 +486,7 @@ class DGKTBishopBruteForceResult(DGKTBaseModel):
     Slices: List[DGKTBishopSlice] = []
 
 
-class DGKTBishopResult(DGKTBaseModel):
+class DGKTBishopResult(DGKTBaseModelPath):
     path_name: str = "results/bishop"
     Circle: DGKTCircle = DGKTCircle()
     Id: str = ""
@@ -496,7 +498,7 @@ class DGKTBishopResult(DGKTBaseModel):
 #########################
 #          C            #
 #########################
-class DGKTCalculationSettings(DGKTBaseModel):
+class DGKTCalculationSettings(DGKTBaseModelPath):
     path_name: str = "calculationsettings"
     Id: str = ""
     AnalysisType: str = ""
@@ -515,7 +517,7 @@ class DGKTCalculationSettings(DGKTBaseModel):
 #########################
 #          D            #
 #########################
-class DGKTDecorations(DGKTBaseModel):
+class DGKTDecorations(DGKTBaseModelPath):
     path_name: str = "decorations"
     Id: str = ""
     Excavations: List[DGKTExcavation] = []
@@ -546,7 +548,7 @@ class DGKTEarthquake(DGKTBaseModel):
 #########################
 
 
-class DGKTGeometry(DGKTBaseModel):
+class DGKTGeometry(DGKTBaseModelPath):
     path_name: str = "geometries"
     Id: str = ""
     Layers: List[DGKTLayer] = []
@@ -588,7 +590,7 @@ class DGKTLineLoad(DGKTBaseModel):
     Consolidations: List[DGKTConsolidation] = []
 
 
-class DGKTLoads(DGKTBaseModel):
+class DGKTLoads(DGKTBaseModelPath):
     path_name: str = "loads"
     Id: str = ""
     LayerLoads: List[DGKTLayerLoad] = []
@@ -651,7 +653,7 @@ class DGKTResult(DGKTBaseModel):
     pass
 
 
-class DGKTReinforcements(DGKTBaseModel):
+class DGKTReinforcements(DGKTBaseModelPath):
     path_name: str = "reinforcements"
     Id: str = ""
     ForbiddenLines: List[DGKTForbiddenLine] = []
@@ -665,7 +667,7 @@ class DGKTReinforcements(DGKTBaseModel):
 #########################
 
 
-class DGKTScenario(DGKTBaseModel):
+class DGKTScenario(DGKTBaseModelPath):
     path_name: str = "scenarios"
     Id: str = ""
     Label: Optional[str] = ""
@@ -711,7 +713,8 @@ class DGKTSoils(DGKTBaseModel):
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
-class DGKTSoilLayers(DGKTBaseModel):
+class DGKTSoilLayers(DGKTBaseModelPath):
+    Id: str = ""
     path_name: str = "soillayers"
     SoilLayers: List[DGKTSoilLayerConnection] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
@@ -733,7 +736,7 @@ class DGKTSoilVisualizations(DGKTBaseModel):
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
-class DGKTSpencerResult(DGKTBaseModel):
+class DGKTSpencerResult(DGKTBaseModelPath):
     path_name: str = "results/spencer"
     SlipPlane: List[DGKTPoint] = []
     Id: str = ""
@@ -742,7 +745,7 @@ class DGKTSpencerResult(DGKTBaseModel):
     Slices: List[DGKTSpencerSlice] = []
 
 
-class DGKTSpencerGeneticAlgorithmResult(DGKTBaseModel):
+class DGKTSpencerGeneticAlgorithmResult(DGKTBaseModelPath):
     path_name: str = "results/spencergeneticalgorithm"
     SlipPlane: List[DGKTPoint] = []
     Id: str = ""
@@ -751,7 +754,7 @@ class DGKTSpencerGeneticAlgorithmResult(DGKTBaseModel):
     Slices: List[DGKTSpencerSlice] = []
 
 
-class DGKTStates(DGKTBaseModel):
+class DGKTStates(DGKTBaseModelPath):
     path_name: str = "states"
     Id: str = ""
     StatePoints: List[DGKTStatePoint] = []
@@ -759,7 +762,7 @@ class DGKTStates(DGKTBaseModel):
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
-class DGKTStateCorrelations(DGKTBaseModel):
+class DGKTStateCorrelations(DGKTBaseModelPath):
     path_name: str = "statecorrelations"
     Id: str = ""
     StateCorrelations: List[DGKTStateCorrelation] = []
@@ -786,7 +789,7 @@ class DGKTUniformLoad(DGKTBaseModel):
     Consolidations: List[DGKTConsolidation] = []
 
 
-class DGKTUpliftVanResult(DGKTBaseModel):
+class DGKTUpliftVanResult(DGKTBaseModelPath):
     path_name: str = "results/upliftvan"
     LeftCenter: DGKTPoint = DGKTPoint()
     RightCenter: DGKTPoint = DGKTPoint()
@@ -797,7 +800,7 @@ class DGKTUpliftVanResult(DGKTBaseModel):
     Slices: List[DGKTUpliftVanSlice] = []
 
 
-class DGKTUpliftVanParticleSwarmResult(DGKTBaseModel):
+class DGKTUpliftVanParticleSwarmResult(DGKTBaseModelPath):
     path_name: str = "results/upliftvanparticleswarm"
     LeftCenter: DGKTPoint = DGKTPoint()
     RightCenter: DGKTPoint = DGKTPoint()
@@ -818,7 +821,7 @@ class DGKTUpliftVanParticleSwarmResult(DGKTBaseModel):
 #########################
 
 
-class DGKTWaternetCreatorSettings(DGKTBaseModel):
+class DGKTWaternetCreatorSettings(DGKTBaseModelPath):
     path_name: str = "waternetcreatorsettings"
     Id: str = ""
     EmbankmentCharacteristics: DGKTEmbankmentCharacteristics = (
@@ -853,7 +856,7 @@ class DGKTWaternetCreatorSettings(DGKTBaseModel):
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
-class DGKTWaternets(DGKTBaseModel):
+class DGKTWaternets(DGKTBaseModelPath):
     path_name: str = "waternets"
     Id: str = ""
     UnitWeightWater: float = 9.81
