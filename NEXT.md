@@ -1,8 +1,8 @@
 ### Step one (DStability reading / writing)
 
 * [x] implement parse (from zipfile)
-* [ ] implement the TODO dataclasses by creating and analyzing stix file with that input
-* [ ] implement serialize function
+* [x] implement the TODO dataclasses by creating and analyzing stix file with that input
+* [x] implement serialize function
 
 ### Step two (DStability layer creation)
 
