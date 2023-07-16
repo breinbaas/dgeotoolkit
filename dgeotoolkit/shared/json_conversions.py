@@ -34,6 +34,7 @@ CONVERTED_CLASSNAMES = {
     "Boundaryconditions": "BoundaryConditions",
     "Meshproperties": "MeshProperties",
     "Pipelengthresult": "PipeLengthResult",
+    "Groundwaterflowresult": "GroundWaterFlowResult",
 }
 
 

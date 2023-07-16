@@ -20,6 +20,10 @@ class DGeoFlowModel(BaseModel):
     Soils: DGTKFSoils = DGTKFSoils()
     SoilVisualizations: DGTKFSoilVisualizations = DGTKFSoilVisualizations()
 
+    PipeLengthResults: List[DGTKFPipeLengthResult] = []
+    GroundWaterFlowResults: List[DGTKFGroundWaterFlowResult] = []
+    # TODO > nog een resultaat toevoegen
+
     def serialize(self, path: str = "") -> Optional[bytes]:
         pass
 
@@ -34,6 +38,7 @@ class DGeoFlowModel(BaseModel):
             soillayers = []
 
             pipelengthresults = []
+            groundwaterflowresult = []
 
             for f in zip.filelist:
                 if f.filename.find(".json") == -1:
@@ -64,6 +69,9 @@ class DGeoFlowModel(BaseModel):
                     if iname == "PipeLengthResult":
                         pipelengthresults.append(instance)
                         continue
+                    if iname == "GroundWaterFlowResult":
+                        groundwaterflowresult.append(instance)
+                        continue
 
                     if iname == "BoundaryConditions":
                         boundaryconditions.append(instance)
@@ -78,3 +86,13 @@ class DGeoFlowModel(BaseModel):
 
                 except Exception as e:
                     raise ValueError(f"Could not handle {f}, got error '{e}'")
+
+        result.BoundaryConditions = boundaryconditions
+        result.Geometries = geometries
+        result.MeshProperties = meshproperties
+        result.Scenarios = scenarios
+        result.SoilLayers = soillayers
+
+        result.PipeLengthResults = pipelengthresults
+        result.GroundWaterFlowResults = groundwaterflowresult
+        return result

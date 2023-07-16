@@ -95,7 +95,7 @@ class DGTKFCalculation(DGTKBaseModel):
         DGTKFCriticalHeadSearchSpace()
     )
     MeshPropertiesId: str = ""
-    ResultsId: str = ""
+    ResultsId: Optional[str] = ""
 
 
 class DGTKFNodes(DGTKBaseModel):
@@ -113,13 +113,6 @@ class DGTKFNodeResult(DGTKBaseModel):
 
 class DGTKFElement(DGTKBaseModel):
     NodeResults: List[DGTKFNodeResult] = []
-
-
-class DGTKFPipeLengthResult(DGTKBaseModel):
-    PipeElements: List[DGTKFNodes] = []
-    PipeLength: float = NAN
-    Id: str = ""
-    Elements: List[DGTKFElement] = []
 
 
 ##############
@@ -677,6 +670,12 @@ class DGTKFGeometry(DGTKBaseModelPath):
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
+class DGTKFGroundWaterFlowResult(DGTKBaseModel):
+    Id: str = ""
+    Elements: List[DGTKFElement] = []
+    ContentVersion: str = CURRENT_CONTENT_VERSION
+
+
 class DGTKSGeometry(DGTKBaseModelPath):
     path_name: str = "geometries"
     Id: str = ""
@@ -756,6 +755,14 @@ class DGTKSNailPropertiesForSoils(DGTKBaseModel):
 #########################
 #          P            #
 #########################
+class DGTKFPipeLengthResult(DGTKBaseModel):
+    PipeElements: List[DGTKFNodes] = []
+    PipeLength: float = NAN
+    Id: str = ""
+    Elements: List[DGTKFElement] = []
+    ContentVersion: str = CURRENT_CONTENT_VERSION
+
+
 class DGTKFProjectInfo(DGTKBaseModel):
     Path: str = ""
     Project: str = ""
