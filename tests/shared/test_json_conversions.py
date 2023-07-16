@@ -13,7 +13,9 @@ def test_json2object():
     fname = "tests/testdata/loads.json"
     cname = Path(fname).stem.capitalize()
 
-    instance = json2object(open("tests/testdata/loads.json", "r").read(), cname)
+    instance = json2object(
+        open("tests/testdata/loads.json", "r").read(), cname, CLASS_PREFIX_DSTABILITY
+    )
     assert type(instance) == DGTKSLoads
     json_string = instance.model_dump_json()
     with open("tests/testdata/output/loads.out.json", "w") as outfile:
