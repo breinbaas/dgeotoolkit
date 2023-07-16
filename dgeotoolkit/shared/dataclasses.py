@@ -1,4 +1,3 @@
-from pydantic import ConfigDict
 from typing import List, Optional, Union, Dict
 
 from ..const import NAN, CURRENT_CONTENT_VERSION
@@ -8,42 +7,136 @@ from ..models.basemodel import DGKTBaseModel, DGKTBaseModelPath
 ####################
 # NEED TO GO FIRST #
 ####################
-class DGKTPoint(DGKTBaseModel):
+
+
+############
+# DGEOFLOW #
+############
+class DGKTFPoint(DGKTBaseModel):
     X: float = NAN
     Z: float = NAN
 
 
-class DGKTCircle(DGKTBaseModel):
-    Center: DGKTPoint = DGKTPoint()
+class DGKTFSoil(DGKTBaseModel):
+    Id: str = ""
+    Name: Optional[str] = ""
+    Code: str = ""
+    Notes: Optional[str] = ""
+    HorizontalPermeability: float = NAN
+    VerticalPermeability: float = NAN
+
+
+class DGKTFSoilVisualization(DGKTBaseModel):
+    SoilId: str = ""
+    Color: str = ""
+    PersistableShadingType: str = ""
+
+
+class DGKTFFixedHeadBoundaryConditionProperties(DGKTBaseModel):
+    HeadLevel: float = NAN
+
+
+class DGKTFBoundaryCondition(DGKTBaseModel):
+    Id: str = ""
+    Label: Optional[str] = ""
+    Notes: Optional[str] = ""
+    Points: List[DGKTFPoint] = []
+    FixedHeadBoundaryConditionProperties: DGKTFFixedHeadBoundaryConditionProperties = (
+        DGKTFFixedHeadBoundaryConditionProperties()
+    )
+
+
+class DGKTFLayer(DGKTBaseModel):
+    Id: str = ""
+    Label: Optional[str] = ""
+    Notes: Optional[str] = ""
+    Points: List[DGKTFPoint] = []
+
+
+class DGKTFMeshProperty(DGKTBaseModel):
+    LayerId: str = ""
+    Label: str = ""
+    ElementSize: float = NAN
+
+
+class DGKTFStage(DGKTBaseModel):
+    Label: str = ""
+    Notes: Optional[str] = ""
+    BoundaryConditionCollectionId: str = ""
+
+
+class DGKTFPipeTrajectory(DGKTBaseModel):
+    Label: str = ""
+    Notes: Optional[str] = ""
+    D70: float = NAN
+    ElementSize: float = NAN
+    ErosionDirection: str = ""
+    Points: List[DGKTFPoint] = []
+
+
+class DGKTFCriticalHeadSearchSpace(DGKTBaseModel):
+    MinimumHeadLevel: float = NAN
+    MaximumHeadLevel: float = NAN
+    StepSize: float = NAN
+
+
+class DGKTFSoilLayer(DGKTBaseModel):
+    LayerId: str = ""
+    SoilId: str = ""
+
+
+class DGKTFCalculation(DGKTBaseModel):
+    Label: str = ""
+    Notes: Optional[str] = ""
+    CalculationType: str = ""
+    PipeTrajectory: DGKTFPipeTrajectory = DGKTFPipeTrajectory()
+    CriticalHeadId: Optional[str] = ""
+    CriticalHeadSearchSpace: DGKTFCriticalHeadSearchSpace = (
+        DGKTFCriticalHeadSearchSpace()
+    )
+    MeshPropertiesId: str = ""
+    ResultsId: str = ""
+
+
+##############
+# DSTABILITY #
+##############
+class DGKTSPoint(DGKTBaseModel):
+    X: float = NAN
+    Z: float = NAN
+
+
+class DGKTSCircle(DGKTBaseModel):
+    Center: DGKTSPoint = DGKTSPoint()
     Radius: float = NAN
 
 
-class DGKTConsolidation(DGKTBaseModel):
+class DGKTSConsolidation(DGKTBaseModel):
     LayerId: str = ""
     Degree: float = 0
 
 
-class DGKTGridEnhancements(DGKTBaseModel):
+class DGKTSGridEnhancements(DGKTBaseModel):
     ExtrapolateSearchSpace: bool = True
 
 
-class DGKTLayer(DGKTBaseModel):
+class DGKTSLayer(DGKTBaseModel):
     Id: str = ""
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Points: List[DGKTPoint] = []
+    Points: List[DGKTSPoint] = []
 
 
-class DGKTSearchGrid(DGKTBaseModel):
+class DGKTSSearchGrid(DGKTBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    BottomLeft: Optional[DGKTPoint] = None
+    BottomLeft: Optional[DGKTSPoint] = None
     Space: float = 1.0
     NumberOfPointsInX: int = 5
     NumberOfPointsInZ: int = 5
 
 
-class DGKTTangentLines(DGKTBaseModel):
+class DGKTSTangentLines(DGKTBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
     BottomTangentLineZ: float = 0.0
@@ -51,7 +144,7 @@ class DGKTTangentLines(DGKTBaseModel):
     NumberOfTangentLines: int = 5
 
 
-class DGKTSlipPlaneConstraintsBishop(DGKTBaseModel):
+class DGKTSSlipPlaneConstraintsBishop(DGKTBaseModel):
     IsSizeConstraintsEnabled: bool = True
     MinimumSlipPlaneDepth: float = 1.0
     MinimumSlipPlaneLength: float = 0.0
@@ -63,34 +156,34 @@ class DGKTSlipPlaneConstraintsBishop(DGKTBaseModel):
     WidthZoneB: float = 0.0
 
 
-class DGKTSlipPlaneUpliftVan(DGKTBaseModel):
-    FirstCircleCenter: DGKTPoint = DGKTPoint()
+class DGKTSSlipPlaneUpliftVan(DGKTBaseModel):
+    FirstCircleCenter: DGKTSPoint = DGKTSPoint()
     FirstCircleRadius: float = 0.0
-    SecondCircleCenter: DGKTPoint = DGKTPoint()
+    SecondCircleCenter: DGKTSPoint = DGKTSPoint()
 
 
-class DGKTUpliftVan(DGKTBaseModel):
+class DGKTSUpliftVan(DGKTBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    SlipPlane: DGKTSlipPlaneUpliftVan = DGKTSlipPlaneUpliftVan()
+    SlipPlane: DGKTSSlipPlaneUpliftVan = DGKTSSlipPlaneUpliftVan()
 
 
-class DGKTSearchArea(DGKTBaseModel):
+class DGKTSSearchArea(DGKTBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    TopLeft: Optional[DGKTPoint] = DGKTPoint()
+    TopLeft: Optional[DGKTSPoint] = DGKTSPoint()
     Width: float = 0.0
     Height: float = 0.0
 
 
-class DGKTTangentArea(DGKTBaseModel):
+class DGKTSTangentArea(DGKTBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
     TopZ: Optional[float] = None
     Height: float = 0.0
 
 
-class DGKTSlipPlaneConstraintsUpliftVanParticleSwarm(DGKTBaseModel):
+class DGKTSSlipPlaneConstraintsUpliftVanParticleSwarm(DGKTBaseModel):
     IsSizeConstraintsEnabled: bool = False
     MinimumSlipPlaneDepth: float = 0.0
     MinimumSlipPlaneLength: float = 0.0
@@ -102,67 +195,67 @@ class DGKTSlipPlaneConstraintsUpliftVanParticleSwarm(DGKTBaseModel):
     WidthZoneB: float = 0.0
 
 
-class DGKTUpliftVanParticleSwarm(DGKTBaseModel):
-    SearchAreaA: DGKTSearchArea = DGKTSearchArea()
-    SearchAreaB: DGKTSearchArea = DGKTSearchArea()
-    TangentArea: DGKTTangentArea = DGKTTangentArea()
-    SlipPlaneConstraints: DGKTSlipPlaneConstraintsUpliftVanParticleSwarm = (
-        DGKTSlipPlaneConstraintsUpliftVanParticleSwarm()
+class DGKTSUpliftVanParticleSwarm(DGKTBaseModel):
+    SearchAreaA: DGKTSSearchArea = DGKTSSearchArea()
+    SearchAreaB: DGKTSSearchArea = DGKTSSearchArea()
+    TangentArea: DGKTSTangentArea = DGKTSTangentArea()
+    SlipPlaneConstraints: DGKTSSlipPlaneConstraintsUpliftVanParticleSwarm = (
+        DGKTSSlipPlaneConstraintsUpliftVanParticleSwarm()
     )
     OptionsType: str = "Default"
 
 
-class DGKTSlipPlaneConstraintsSpencer(DGKTBaseModel):
+class DGKTSSlipPlaneConstraintsSpencer(DGKTBaseModel):
     IsEnabled: bool = False
     MinimumAngleBetweenSlices: float = 0.0
     MinimumThrustLinePercentageInsideSlices: float = 0.0
 
 
-class DGKTSpencer(DGKTBaseModel):
+class DGKTSSpencer(DGKTBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    SlipPlane: Optional[List[DGKTPoint]] = []
-    SlipPlaneConstraints: DGKTSlipPlaneConstraintsSpencer = (
-        DGKTSlipPlaneConstraintsSpencer()
+    SlipPlane: Optional[List[DGKTSPoint]] = []
+    SlipPlaneConstraints: DGKTSSlipPlaneConstraintsSpencer = (
+        DGKTSSlipPlaneConstraintsSpencer()
     )
 
 
-class DGKTSpencerGenetic(DGKTBaseModel):
+class DGKTSSpencerGenetic(DGKTBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    SlipPlaneA: Optional[List[DGKTPoint]] = []
-    SlipPlaneB: Optional[List[DGKTPoint]] = []
+    SlipPlaneA: Optional[List[DGKTSPoint]] = []
+    SlipPlaneB: Optional[List[DGKTSPoint]] = []
     OptionsType: str = "Default"
-    SlipPlaneConstraints: DGKTSlipPlaneConstraintsSpencer = (
-        DGKTSlipPlaneConstraintsSpencer()
+    SlipPlaneConstraints: DGKTSSlipPlaneConstraintsSpencer = (
+        DGKTSSlipPlaneConstraintsSpencer()
     )
 
 
-class DGKTForbiddenLine(DGKTBaseModel):
+class DGKTSForbiddenLine(DGKTBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Start: DGKTPoint = DGKTPoint()
-    End: DGKTPoint = DGKTPoint()
+    Start: DGKTSPoint = DGKTSPoint()
+    End: DGKTSPoint = DGKTSPoint()
 
 
-class DGKTGeotextile(DGKTBaseModel):
+class DGKTSGeotextile(DGKTBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Start: DGKTPoint = DGKTPoint()
-    End: DGKTPoint = DGKTPoint()
+    Start: DGKTSPoint = DGKTSPoint()
+    End: DGKTSPoint = DGKTSPoint()
     TensileStrength: float = 0.0
     ReductionArea: float = 0.0
 
 
-class DGKTStress(DGKTBaseModel):
+class DGKTSStress(DGKTBaseModel):
     Distance: float = 0.0
     Stress: float = 0.0
 
 
-class DGKTNail(DGKTBaseModel):
+class DGKTSNail(DGKTBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Location: DGKTPoint = DGKTPoint()
+    Location: DGKTSPoint = DGKTSPoint()
     Direction: float = 0.0
     HorizontalSpacing: float = 0.0
     Length: float = 3.0
@@ -175,8 +268,8 @@ class DGKTNail(DGKTBaseModel):
     UseFacing: bool = False
     UseLateralStress: bool = False
     UseShearStress: bool = False
-    LateralStresses: List[DGKTStress] = []
-    ShearStresses: List[DGKTStress] = []
+    LateralStresses: List[DGKTSStress] = []
+    ShearStresses: List[DGKTSStress] = []
 
 
 class DGKTStochasticParameter(DGKTBaseModel):
@@ -185,7 +278,7 @@ class DGKTStochasticParameter(DGKTBaseModel):
     StandardDeviation: float = 0.0
 
 
-class DGKTStateStress(DGKTBaseModel):
+class DGKTSStateStress(DGKTBaseModel):
     StateType: str = ""
     Pop: float = 0.0
     PopStochasticParameter: DGKTStochasticParameter = DGKTStochasticParameter()
@@ -193,37 +286,37 @@ class DGKTStateStress(DGKTBaseModel):
     YieldStress: float = 0.0
 
 
-class DGKTStateCorrelation(DGKTBaseModel):
+class DGKTSStateCorrelation(DGKTBaseModel):
     pass  # TODO
 
 
-class DGKTStatePoint(DGKTBaseModel):
+class DGKTSStatePoint(DGKTBaseModel):
     Id: str = ""
     LayerId: str = ""
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
     IsProbabilistic: bool = True
-    Point: DGKTPoint = DGKTPoint()
-    Stress: DGKTStateStress = DGKTStateStress()
+    Point: DGKTSPoint = DGKTSPoint()
+    Stress: DGKTSStateStress = DGKTSStateStress()
 
 
-class DGKTStateLineValue(DGKTBaseModel):
+class DGKTSStateLineValue(DGKTBaseModel):
     Id: str = ""
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
     X: float = NAN
     IsProbabilistic: bool = True
     IsAboveAndBelowCorrelated: bool = True
-    Above: DGKTStateStress = DGKTStateStress()
-    Below: DGKTStateStress = DGKTStateStress()
+    Above: DGKTSStateStress = DGKTSStateStress()
+    Below: DGKTSStateStress = DGKTSStateStress()
 
 
-class DGKTStateLine(DGKTBaseModel):
-    Points: List[DGKTPoint] = []
-    Values: List[DGKTStateLineValue] = []
+class DGKTSStateLine(DGKTBaseModel):
+    Points: List[DGKTSPoint] = []
+    Values: List[DGKTSStateLineValue] = []
 
 
-class DGKTSpencerSlice(DGKTBaseModel):
+class DGKTSSpencerSlice(DGKTBaseModel):
     LeftForce: float = NAN
     LeftForceY: float = NAN
     LeftForceAngle: float = NAN
@@ -232,10 +325,10 @@ class DGKTSpencerSlice(DGKTBaseModel):
     RightForceAngle: float = NAN
     ArcLength: float = NAN
     BottomAngle: float = NAN
-    BottomLeft: DGKTPoint = DGKTPoint()
-    BottomRight: DGKTPoint = DGKTPoint()
-    TopLeft: DGKTPoint = DGKTPoint()
-    TopRight: DGKTPoint = DGKTPoint()
+    BottomLeft: DGKTSPoint = DGKTSPoint()
+    BottomRight: DGKTSPoint = DGKTSPoint()
+    TopLeft: DGKTSPoint = DGKTSPoint()
+    TopRight: DGKTSPoint = DGKTSPoint()
     CohesionInput: float = NAN
     DegreeOfConsolidationLoadPorePressure: float = NAN
     DegreeOfConsolidationPorePressure: float = NAN
@@ -272,13 +365,13 @@ class DGKTSpencerSlice(DGKTBaseModel):
     ShearStrengthModelType: str = ""
 
 
-class DGKTUpliftVanSlice(DGKTBaseModel):
+class DGKTSUpliftVanSlice(DGKTBaseModel):
     ArcLength: float = NAN
     BottomAngle: float = NAN
-    BottomLeft: DGKTPoint = DGKTPoint()
-    BottomRight: DGKTPoint = DGKTPoint()
-    TopLeft: DGKTPoint = DGKTPoint()
-    TopRight: DGKTPoint = DGKTPoint()
+    BottomLeft: DGKTSPoint = DGKTSPoint()
+    BottomRight: DGKTSPoint = DGKTSPoint()
+    TopLeft: DGKTSPoint = DGKTSPoint()
+    TopRight: DGKTSPoint = DGKTSPoint()
     CohesionInput: float = NAN
     DegreeOfConsolidationLoadPorePressure: float = NAN
     DegreeOfConsolidationPorePressure: float = NAN
@@ -315,13 +408,13 @@ class DGKTUpliftVanSlice(DGKTBaseModel):
     ShearStrengthModelType: str = ""
 
 
-class DGKTBishopSlice(DGKTBaseModel):
+class DGKTSBishopSlice(DGKTBaseModel):
     ArcLength: float = NAN
     BottomAngle: float = NAN
-    BottomLeft: DGKTPoint = DGKTPoint()
-    BottomRight: DGKTPoint = DGKTPoint()
-    TopLeft: DGKTPoint = DGKTPoint()
-    TopRight: DGKTPoint = DGKTPoint()
+    BottomLeft: DGKTSPoint = DGKTSPoint()
+    BottomRight: DGKTSPoint = DGKTSPoint()
+    TopLeft: DGKTSPoint = DGKTSPoint()
+    TopRight: DGKTSPoint = DGKTSPoint()
     CohesionInput: float = 0.0
     DegreeOfConsolidationLoadPorePressure: float = 0.0
     DegreeOfConsolidationPorePressure: float = 0.0
@@ -358,19 +451,19 @@ class DGKTBishopSlice(DGKTBaseModel):
     ShearStrengthModelType: str = "CPhi"
 
 
-class DGKTSoilLayerConnection(DGKTBaseModel):
+class DGKTSSoilLayerConnection(DGKTBaseModel):
     LayerId: str = ""
     SoilId: str = ""
 
 
-class DGKTDitchCharacteristics(DGKTBaseModel):
+class DGKTSDitchCharacteristics(DGKTBaseModel):
     DitchEmbankmentSide: float = NAN
     DitchBottomEmbankmentSide: float = NAN
     DitchBottomLandSide: float = NAN
     DitchLandSide: float = NAN
 
 
-class DGKTEmbankmentCharacteristics(DGKTBaseModel):
+class DGKTSEmbankmentCharacteristics(DGKTBaseModel):
     EmbankmentToeWaterSide: float = NAN
     EmbankmentTopWaterSide: float = NAN
     EmbankmentTopLandSide: float = NAN
@@ -378,38 +471,38 @@ class DGKTEmbankmentCharacteristics(DGKTBaseModel):
     EmbankmentToeLandSide: float = NAN
 
 
-class DGKTSuTablePoint(DGKTBaseModel):
+class DGKTSSuTablePoint(DGKTBaseModel):
     EffectiveStress: float = 0.0
     Su: float = 0.0
 
 
-class DGKTSuTable(DGKTBaseModel):
+class DGKTSSuTable(DGKTBaseModel):
     StrengthIncreaseExponent: float = 0.0
     StrengthIncreaseExponentStochasticParameter: DGKTStochasticParameter = (
         DGKTStochasticParameter()
     )
-    SuTablePoints: List[DGKTSuTablePoint] = []
+    SuTablePoints: List[DGKTSSuTablePoint] = []
     IsSuTableProbabilistic: bool = False
     SuTableVariationCoefficient: float = 0.0
 
 
-class DGKTHeadLine(DGKTBaseModel):
+class DGKTSHeadLine(DGKTBaseModel):
     Id: str = ""
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Points: List[DGKTPoint] = []
+    Points: List[DGKTSPoint] = []
 
 
-class DGKTReferenceLine(DGKTBaseModel):
+class DGKTSReferenceLine(DGKTBaseModel):
     Id: str = ""
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
     TopHeadLineId: str = ""
     BottomHeadLineId: str = ""
-    Points: List[DGKTPoint] = []
+    Points: List[DGKTSPoint] = []
 
 
-class DGKTStage(DGKTBaseModel):
+class DGKTSStage(DGKTBaseModel):
     Id: str = ""
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
@@ -424,7 +517,7 @@ class DGKTStage(DGKTBaseModel):
     ReinforcementsId: str = ""
 
 
-class DGKTCalculation(DGKTBaseModel):
+class DGKTSCalculation(DGKTBaseModel):
     Id: str = ""
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
@@ -432,26 +525,26 @@ class DGKTCalculation(DGKTBaseModel):
     ResultId: Optional[str] = ""
 
 
-class DGKTExcavation(DGKTBaseModel):
+class DGKTSExcavation(DGKTBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Points: List[DGKTPoint] = []
+    Points: List[DGKTSPoint] = []
 
 
-class DGKTElevation(DGKTBaseModel):
+class DGKTSElevation(DGKTBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Points: List[DGKTPoint] = []
+    Points: List[DGKTSPoint] = []
     AddedLayerId: str = ""
 
 
-class DGKTTree(DGKTBaseModel):
+class DGKTSTree(DGKTBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
     Force: float = 0.0
     RootZoneWidth: float = 5.0
     Spread: float = 0.0
-    Location: DGKTPoint = DGKTPoint()
+    Location: DGKTSPoint = DGKTSPoint()
 
 
 #########################
@@ -462,80 +555,87 @@ class DGKTTree(DGKTBaseModel):
 #########################
 #          B            #
 #########################
-class DGKTBishop(DGKTBaseModel):
+class DGKTFBoundaryConditions(DGKTBaseModelPath):
+    path_name: str = "boundaryconditions"
+    Id: str = ""
+    BoundaryConditions: List[DGKTFBoundaryCondition] = []
+    ContentVersion: str = CURRENT_CONTENT_VERSION
+
+
+class DGKTSBishop(DGKTBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Circle: DGKTCircle = DGKTCircle()
+    Circle: DGKTSCircle = DGKTSCircle()
 
 
-class DGKTBishopBruteForce(DGKTBaseModel):
-    SearchGrid: DGKTSearchGrid = DGKTSearchGrid()
-    TangentLines: DGKTTangentLines = DGKTTangentLines()
-    GridEnhancements: DGKTGridEnhancements = DGKTGridEnhancements()
-    SlipPlaneConstraints: DGKTSlipPlaneConstraintsBishop = (
-        DGKTSlipPlaneConstraintsBishop()
+class DGKTSBishopBruteForce(DGKTBaseModel):
+    SearchGrid: DGKTSSearchGrid = DGKTSSearchGrid()
+    TangentLines: DGKTSTangentLines = DGKTSTangentLines()
+    GridEnhancements: DGKTSGridEnhancements = DGKTSGridEnhancements()
+    SlipPlaneConstraints: DGKTSSlipPlaneConstraintsBishop = (
+        DGKTSSlipPlaneConstraintsBishop()
     )
 
 
-class DGKTBishopBruteForceResult(DGKTBaseModelPath):
+class DGKTSBishopBruteForceResult(DGKTBaseModelPath):
     path_name: str = "results/bishopbruteforce"
-    Circle: DGKTCircle = DGKTCircle()
+    Circle: DGKTSCircle = DGKTSCircle()
     Id: str = ""
     FactorOfSafety: float = 0.0
-    Points: List[DGKTPoint] = []
-    Slices: List[DGKTBishopSlice] = []
+    Points: List[DGKTSPoint] = []
+    Slices: List[DGKTSBishopSlice] = []
 
 
-class DGKTBishopResult(DGKTBaseModelPath):
+class DGKTSBishopResult(DGKTBaseModelPath):
     path_name: str = "results/bishop"
-    Circle: DGKTCircle = DGKTCircle()
+    Circle: DGKTSCircle = DGKTSCircle()
     Id: str = ""
     FactorOfSafety: float = 0.0
-    Points: List[DGKTPoint] = []
-    Slices: List[DGKTBishopSlice] = []
+    Points: List[DGKTSPoint] = []
+    Slices: List[DGKTSBishopSlice] = []
 
 
 #########################
 #          C            #
 #########################
-class DGKTCalculationSettings(DGKTBaseModelPath):
+class DGKTSCalculationSettings(DGKTBaseModelPath):
     path_name: str = "calculationsettings"
     Id: str = ""
     AnalysisType: str = ""
     CalculationType: str = "Deterministic"
     ModelFactorMean: float = 1.0
     ModelFactorStandardDeviation: float = 0.0
-    Bishop: DGKTBishop = DGKTBishop()
-    BishopBruteForce: DGKTBishopBruteForce = DGKTBishopBruteForce()
-    UpliftVan: DGKTUpliftVan = DGKTUpliftVan()
-    UpliftVanParticleSwarm: DGKTUpliftVanParticleSwarm = DGKTUpliftVanParticleSwarm()
-    Spencer: DGKTSpencer = DGKTSpencer()
-    SpencerGenetic: DGKTSpencerGenetic = DGKTSpencerGenetic()
+    Bishop: DGKTSBishop = DGKTSBishop()
+    BishopBruteForce: DGKTSBishopBruteForce = DGKTSBishopBruteForce()
+    UpliftVan: DGKTSUpliftVan = DGKTSUpliftVan()
+    UpliftVanParticleSwarm: DGKTSUpliftVanParticleSwarm = DGKTSUpliftVanParticleSwarm()
+    Spencer: DGKTSSpencer = DGKTSSpencer()
+    SpencerGenetic: DGKTSSpencerGenetic = DGKTSSpencerGenetic()
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
 #########################
 #          D            #
 #########################
-class DGKTDecorations(DGKTBaseModelPath):
+class DGKTSDecorations(DGKTBaseModelPath):
     path_name: str = "decorations"
     Id: str = ""
-    Excavations: List[DGKTExcavation] = []
-    Elevations: List[DGKTElevation] = []
+    Excavations: List[DGKTSExcavation] = []
+    Elevations: List[DGKTSElevation] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
 #########################
 #          E            #
 #########################
-class DGKTEarthquake(DGKTBaseModel):
+class DGKTSEarthquake(DGKTBaseModel):
     IsEnabled: bool = False
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
     HorizontalFactor: float = 0.0
     VerticalFactor: float = 0.0
     FreeWaterFactor: float = 0.0
-    Consolidations: List[DGKTConsolidation] = []
+    Consolidations: List[DGKTSConsolidation] = []
 
 
 #########################
@@ -546,12 +646,17 @@ class DGKTEarthquake(DGKTBaseModel):
 #########################
 #          G            #
 #########################
-
-
-class DGKTGeometry(DGKTBaseModelPath):
+class DGKTFGeometry(DGKTBaseModelPath):
     path_name: str = "geometries"
     Id: str = ""
-    Layers: List[DGKTLayer] = []
+    Layers: List[DGKTFLayer] = []
+    ContentVersion: str = CURRENT_CONTENT_VERSION
+
+
+class DGKTSGeometry(DGKTBaseModelPath):
+    path_name: str = "geometries"
+    Id: str = ""
+    Layers: List[DGKTSLayer] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
@@ -575,41 +680,46 @@ class DGKTGeometry(DGKTBaseModelPath):
 #########################
 #          L            #
 #########################
-class DGKTLayerLoad(DGKTBaseModel):
+class DGKTSLayerLoad(DGKTBaseModel):
     LayerId: str = ""
-    Consolidations: List[DGKTConsolidation] = []
+    Consolidations: List[DGKTSConsolidation] = []
 
 
-class DGKTLineLoad(DGKTBaseModel):
+class DGKTSLineLoad(DGKTBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Location: DGKTPoint = DGKTPoint()
+    Location: DGKTSPoint = DGKTSPoint()
     Magnitude: float = 10.0
     Spread: float = 0.0
     Angle: float = 0.0
-    Consolidations: List[DGKTConsolidation] = []
+    Consolidations: List[DGKTSConsolidation] = []
 
 
-class DGKTLoads(DGKTBaseModelPath):
+class DGKTSLoads(DGKTBaseModelPath):
     path_name: str = "loads"
     Id: str = ""
-    LayerLoads: List[DGKTLayerLoad] = []
-    UniformLoads: List["DGKTUniformLoad"] = []
-    LineLoads: List[DGKTLineLoad] = []
-    Trees: List[DGKTTree] = []
-    Earthquake: DGKTEarthquake = DGKTEarthquake()
+    LayerLoads: List[DGKTSLayerLoad] = []
+    UniformLoads: List["DGKTSUniformLoad"] = []
+    LineLoads: List[DGKTSLineLoad] = []
+    Trees: List[DGKTSTree] = []
+    Earthquake: DGKTSEarthquake = DGKTSEarthquake()
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
 #########################
 #          M            #
 #########################
+class DGKTFMeshProperties(DGKTBaseModelPath):
+    path_name: str = "meshproperties"
+    Id: str = ""
+    MeshProperties: List[DGKTFMeshProperty] = []
+    ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
 #########################
 #          N            #
 #########################
-class DGKTNailPropertiesForSoils(DGKTBaseModel):
+class DGKTSNailPropertiesForSoils(DGKTBaseModel):
     NailPropertiesForSoils: List[Dict] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
@@ -622,9 +732,23 @@ class DGKTNailPropertiesForSoils(DGKTBaseModel):
 #########################
 #          P            #
 #########################
+class DGKTFProjectInfo(DGKTBaseModel):
+    Path: str = ""
+    Project: str = ""
+    CrossSection: str = ""
+    Remarks: str = ""
+    Analyst: str = ""
+    LastModifier: str = ""
+    Date: Optional[str] = ""
+    LastModified: str = ""
+    Created: str = ""
+    ApplicationCreated: str = ""
+    ApplicationModified: str = ""
+    IsDataValidated: bool = True
+    ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
-class DGKTProjectInfo(DGKTBaseModel):
+class DGKTSProjectInfo(DGKTBaseModel):
     Path: str = ""
     Project: str = ""
     CrossSection: str = ""
@@ -649,35 +773,58 @@ class DGKTProjectInfo(DGKTBaseModel):
 #########################
 
 
-class DGKTResult(DGKTBaseModel):
-    pass
-
-
-class DGKTReinforcements(DGKTBaseModelPath):
+class DGKTSReinforcements(DGKTBaseModelPath):
     path_name: str = "reinforcements"
     Id: str = ""
-    ForbiddenLines: List[DGKTForbiddenLine] = []
-    Geotextiles: List[DGKTGeotextile] = []
-    Nails: List[DGKTNail] = []
+    ForbiddenLines: List[DGKTSForbiddenLine] = []
+    Geotextiles: List[DGKTSGeotextile] = []
+    Nails: List[DGKTSNail] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
 #########################
 #          S            #
 #########################
-
-
-class DGKTScenario(DGKTBaseModelPath):
+class DGKTFScenarios(DGKTBaseModelPath):
     path_name: str = "scenarios"
     Id: str = ""
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Stages: List[DGKTStage] = []
-    Calculations: List[DGKTCalculation] = []
+    GeometryId: str = ""
+    SoilLayersId: str = ""
+    Stages: List[DGKTFStage] = []
+    Calculations: List[DGKTFCalculation] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
-class DGKTSoil(DGKTBaseModel):
+class DGKTFSoilLayers(DGKTBaseModelPath):
+    path_name: str = "soillayers"
+    Id: str = ""
+    SoilLayers: List[DGKTFSoilLayer] = []
+    ContentVersion: str = CURRENT_CONTENT_VERSION
+
+
+class DGKTFSoils(DGKTBaseModelPath):
+    Soils: List[DGKTFSoil] = []
+    ContentVersion: str = CURRENT_CONTENT_VERSION
+
+
+class DGKTFSoilVisualizations(DGKTBaseModel):
+    SoilVisualizations: List[DGKTFSoilVisualization] = []
+    ContentVersion: str = CURRENT_CONTENT_VERSION
+
+
+class DGKTSScenario(DGKTBaseModelPath):
+    path_name: str = "scenarios"
+    Id: str = ""
+    Label: Optional[str] = ""
+    Notes: Optional[str] = ""
+    Stages: List[DGKTSStage] = []
+    Calculations: List[DGKTSCalculation] = []
+    ContentVersion: str = CURRENT_CONTENT_VERSION
+
+
+class DGKTSSoil(DGKTBaseModel):
     Id: str = ""
     Name: str = ""
     Notes: Optional[str] = ""
@@ -705,67 +852,67 @@ class DGKTSoil(DGKTBaseModel):
         DGKTStochasticParameter()
     )
     ShearStrengthRatioAndShearStrengthExponentCorrelated: bool = False
-    SuTable: DGKTSuTable = DGKTSuTable()
+    SuTable: DGKTSSuTable = DGKTSSuTable()
 
 
-class DGKTSoils(DGKTBaseModel):
-    Soils: List[DGKTSoil] = []
+class DGKTSSoils(DGKTBaseModel):
+    Soils: List[DGKTSSoil] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
-class DGKTSoilLayers(DGKTBaseModelPath):
+class DGKTSSoilLayers(DGKTBaseModelPath):
     Id: str = ""
     path_name: str = "soillayers"
-    SoilLayers: List[DGKTSoilLayerConnection] = []
+    SoilLayers: List[DGKTSSoilLayerConnection] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
-class DGKTSoilCorrelations(DGKTBaseModel):
+class DGKTSSoilCorrelations(DGKTBaseModel):
     SoilCorrelations: List[Dict] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
-class DGKTSoilVisualization(DGKTBaseModel):
+class DGKTSSoilVisualization(DGKTBaseModel):
     SoilId: str = ""
     Color: str = ""
     PersistableShadingType: str = ""
 
 
-class DGKTSoilVisualizations(DGKTBaseModel):
-    SoilVisualizations: List[DGKTSoilVisualization] = []
+class DGKTSSoilVisualizations(DGKTBaseModel):
+    SoilVisualizations: List[DGKTSSoilVisualization] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
-class DGKTSpencerResult(DGKTBaseModelPath):
+class DGKTSSpencerResult(DGKTBaseModelPath):
     path_name: str = "results/spencer"
-    SlipPlane: List[DGKTPoint] = []
+    SlipPlane: List[DGKTSPoint] = []
     Id: str = ""
     FactorOfSafety: float = 0.0
-    Points: List[DGKTPoint] = []
-    Slices: List[DGKTSpencerSlice] = []
+    Points: List[DGKTSPoint] = []
+    Slices: List[DGKTSSpencerSlice] = []
 
 
-class DGKTSpencerGeneticAlgorithmResult(DGKTBaseModelPath):
+class DGKTSSpencerGeneticAlgorithmResult(DGKTBaseModelPath):
     path_name: str = "results/spencergeneticalgorithm"
-    SlipPlane: List[DGKTPoint] = []
+    SlipPlane: List[DGKTSPoint] = []
     Id: str = ""
     FactorOfSafety: float = 0.0
-    Points: List[DGKTPoint] = []
-    Slices: List[DGKTSpencerSlice] = []
+    Points: List[DGKTSPoint] = []
+    Slices: List[DGKTSSpencerSlice] = []
 
 
-class DGKTStates(DGKTBaseModelPath):
+class DGKTSStates(DGKTBaseModelPath):
     path_name: str = "states"
     Id: str = ""
-    StatePoints: List[DGKTStatePoint] = []
-    StateLines: List[DGKTStateLine] = []
+    StatePoints: List[DGKTSStatePoint] = []
+    StateLines: List[DGKTSStateLine] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
-class DGKTStateCorrelations(DGKTBaseModelPath):
+class DGKTSStateCorrelations(DGKTBaseModelPath):
     path_name: str = "statecorrelations"
     Id: str = ""
-    StateCorrelations: List[DGKTStateCorrelation] = []
+    StateCorrelations: List[DGKTSStateCorrelation] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
@@ -779,36 +926,36 @@ class DGKTStateCorrelations(DGKTBaseModelPath):
 #########################
 
 
-class DGKTUniformLoad(DGKTBaseModel):
+class DGKTSUniformLoad(DGKTBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
     Start: float = 0.0
     End: float = 0.0
     Magnitude: float = 0.0
     Spread: float = 0.0
-    Consolidations: List[DGKTConsolidation] = []
+    Consolidations: List[DGKTSConsolidation] = []
 
 
-class DGKTUpliftVanResult(DGKTBaseModelPath):
+class DGKTSUpliftVanResult(DGKTBaseModelPath):
     path_name: str = "results/upliftvan"
-    LeftCenter: DGKTPoint = DGKTPoint()
-    RightCenter: DGKTPoint = DGKTPoint()
+    LeftCenter: DGKTSPoint = DGKTSPoint()
+    RightCenter: DGKTSPoint = DGKTSPoint()
     TangentLine: float = NAN
     Id: str = ""
     FactorOfSafety: float = 0.0
-    Points: List[DGKTPoint] = []
-    Slices: List[DGKTUpliftVanSlice] = []
+    Points: List[DGKTSPoint] = []
+    Slices: List[DGKTSUpliftVanSlice] = []
 
 
-class DGKTUpliftVanParticleSwarmResult(DGKTBaseModelPath):
+class DGKTSUpliftVanParticleSwarmResult(DGKTBaseModelPath):
     path_name: str = "results/upliftvanparticleswarm"
-    LeftCenter: DGKTPoint = DGKTPoint()
-    RightCenter: DGKTPoint = DGKTPoint()
+    LeftCenter: DGKTSPoint = DGKTSPoint()
+    RightCenter: DGKTSPoint = DGKTSPoint()
     TangentLine: float = NAN
     Id: str = ""
     FactorOfSafety: float = 0.0
-    Points: List[DGKTPoint] = []
-    Slices: List[DGKTUpliftVanSlice] = []
+    Points: List[DGKTSPoint] = []
+    Slices: List[DGKTSUpliftVanSlice] = []
 
 
 #########################
@@ -821,13 +968,13 @@ class DGKTUpliftVanParticleSwarmResult(DGKTBaseModelPath):
 #########################
 
 
-class DGKTWaternetCreatorSettings(DGKTBaseModelPath):
+class DGKTSWaternetCreatorSettings(DGKTBaseModelPath):
     path_name: str = "waternetcreatorsettings"
     Id: str = ""
-    EmbankmentCharacteristics: DGKTEmbankmentCharacteristics = (
-        DGKTEmbankmentCharacteristics()
+    EmbankmentCharacteristics: DGKTSEmbankmentCharacteristics = (
+        DGKTSEmbankmentCharacteristics()
     )
-    DitchCharacteristics: DGKTDitchCharacteristics = DGKTDitchCharacteristics()
+    DitchCharacteristics: DGKTSDitchCharacteristics = DGKTSDitchCharacteristics()
     IsDitchPresent: bool = False
     EmbankmentSoilScenario: str = "ClayEmbankmentOnClay"
     NormativeWaterLevel: float = NAN
@@ -841,7 +988,7 @@ class DGKTWaternetCreatorSettings(DGKTBaseModelPath):
     OffsetShoulderBaseLandSide: float = NAN
     OffsetEmbankmentToeLandSide: float = NAN
     IsDrainageConstructionPresent: bool = False
-    DrainageConstruction: DGKTPoint = DGKTPoint()
+    DrainageConstruction: DGKTSPoint = DGKTSPoint()
     AquiferLayerId: Optional[str] = None
     AquiferInsideAquitardLayerId: Optional[str] = None
     AdjustForUplift: bool = False
@@ -856,13 +1003,13 @@ class DGKTWaternetCreatorSettings(DGKTBaseModelPath):
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
-class DGKTWaternets(DGKTBaseModelPath):
+class DGKTSWaternets(DGKTBaseModelPath):
     path_name: str = "waternets"
     Id: str = ""
     UnitWeightWater: float = 9.81
     PhreaticLineId: Optional[str] = None
-    HeadLines: List[DGKTHeadLine] = []
-    ReferenceLines: List[DGKTReferenceLine] = []
+    HeadLines: List[DGKTSHeadLine] = []
+    ReferenceLines: List[DGKTSReferenceLine] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 

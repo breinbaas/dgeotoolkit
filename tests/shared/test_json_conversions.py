@@ -5,7 +5,7 @@ from dgeotoolkit.shared.json_conversions import (
     json2object,
     object_from_str,
 )
-from dgeotoolkit.shared.dataclasses import DGKTLoads
+from dgeotoolkit.shared.dataclasses import DGKTSLoads
 
 
 def test_json2object():
@@ -13,7 +13,7 @@ def test_json2object():
     cname = Path(fname).stem.capitalize()
 
     instance = json2object(open("tests/testdata/loads.json", "r").read(), cname)
-    assert type(instance) == DGKTLoads
+    assert type(instance) == DGKTSLoads
     json_string = instance.model_dump_json()
     with open("tests/testdata/output/loads.out.json", "w") as outfile:
         outfile.write(json_string)
@@ -22,4 +22,4 @@ def test_json2object():
 def test_object_from_str():
     s = open("tests/testdata/loads.json", "r").read()
     instance = object_from_str(s, "Loads")
-    assert type(instance) == DGKTLoads
+    assert type(instance) == DGKTSLoads

@@ -2,7 +2,7 @@ import importlib
 import json
 from pathlib import Path
 
-from ..const import NAN, CLASS_PREFIX
+from ..const import NAN, CLASS_PREFIX_DSTABILITY
 
 import dgeotoolkit.shared.dataclasses
 
@@ -42,7 +42,7 @@ def json2object(json_string: str, class_name: str):
     # if Deltares somehow decides to use Object in the json we
     # have a problem and need to rename all dataclasses in the
     # shared/dataclasses.py file to some other postfix
-    if json_string.find(CLASS_PREFIX) > -1:
+    if json_string.find(CLASS_PREFIX_DSTABILITY) > -1:
         raise ValueError(
             f"Deltares has added a field called containing the prefix 'DGKT' in the json, this will mess up the functionality!"
         )
@@ -50,7 +50,7 @@ def json2object(json_string: str, class_name: str):
     try:
         if class_name in CONVERTED_CLASSNAMES.keys():
             class_name = CONVERTED_CLASSNAMES[class_name]
-        class_name = f"{CLASS_PREFIX}{class_name}"
+        class_name = f"{CLASS_PREFIX_DSTABILITY}{class_name}"
         _Class = getattr(
             importlib.import_module("dgeotoolkit.shared.dataclasses"), class_name
         )
