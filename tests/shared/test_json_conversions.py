@@ -6,6 +6,7 @@ from dgeotoolkit.shared.json_conversions import (
     object_from_str,
 )
 from dgeotoolkit.shared.dataclasses import DGKTSLoads
+from dgeotoolkit.const import CLASS_PREFIX_DSTABILITY
 
 
 def test_json2object():
@@ -21,5 +22,5 @@ def test_json2object():
 
 def test_object_from_str():
     s = open("tests/testdata/loads.json", "r").read()
-    instance = object_from_str(s, "Loads")
+    instance = object_from_str(s, "Loads", CLASS_PREFIX_DSTABILITY)
     assert type(instance) == DGKTSLoads

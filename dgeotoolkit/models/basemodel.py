@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class DGKTBaseModel(BaseModel):
+class DGTKBaseModel(BaseModel):
     @property
     def json_string(self):
         sjson = self.model_dump_json(indent=4)
@@ -9,7 +9,7 @@ class DGKTBaseModel(BaseModel):
         return sjson
 
 
-class DGKTBaseModelPath(DGKTBaseModel):
+class DGTKBaseModelPath(DGTKBaseModel):
     path_name: str = ""  # fill in if the class has a seperate folder in the stix file
 
     @property

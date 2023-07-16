@@ -10,30 +10,30 @@ from ..const import CLASS_PREFIX_DSTABILITY
 
 class DStabilityModel(BaseModel):
     # membernames should match the filenames (not the folder names because the are inconsisten (e.g. geoemtries / geometry))
-    CalculationSettings: List[DGKTSCalculationSettings] = [DGKTSCalculationSettings()]
-    Decorations: List[DGKTSDecorations] = [DGKTSDecorations()]
-    Geometry: List[DGKTSGeometry] = [DGKTSGeometry()]
-    Loads: List[DGKTSLoads] = [DGKTSLoads()]
-    Reinforcements: List[DGKTSReinforcements] = [DGKTSReinforcements()]
-    BishopResults: List[DGKTSBishopResult] = []
-    BishopBruteForceResults: DGKTSBishopBruteForceResult = []
-    Scenario: List[DGKTSScenario] = [DGKTSScenario()]
-    SoilLayers: List[DGKTSSoilLayers] = [DGKTSSoilLayers()]
-    SpencerResults: List[DGKTSSpencer] = []
-    SpencerGeneticAlgorithmResults: List[DGKTSSpencerGeneticAlgorithmResult] = []
-    StateCorrelations: List[DGKTSStateCorrelations] = [DGKTSStateCorrelations()]
-    UpliftVanResults: List[DGKTSUpliftVanResult] = []
-    UpliftVanParticleSwarmResults: List[DGKTSUpliftVanParticleSwarmResult] = []
-    States: List[DGKTSStates] = [DGKTSStates()]
-    WaternetCreatorSettings: List[DGKTSWaternetCreatorSettings] = [
-        (DGKTSWaternetCreatorSettings())
+    CalculationSettings: List[DGTKSCalculationSettings] = [DGTKSCalculationSettings()]
+    Decorations: List[DGTKSDecorations] = [DGTKSDecorations()]
+    Geometry: List[DGTKSGeometry] = [DGTKSGeometry()]
+    Loads: List[DGTKSLoads] = [DGTKSLoads()]
+    Reinforcements: List[DGTKSReinforcements] = [DGTKSReinforcements()]
+    BishopResults: List[DGTKSBishopResult] = []
+    BishopBruteForceResults: DGTKSBishopBruteForceResult = []
+    Scenario: List[DGTKSScenario] = [DGTKSScenario()]
+    SoilLayers: List[DGTKSSoilLayers] = [DGTKSSoilLayers()]
+    SpencerResults: List[DGTKSSpencer] = []
+    SpencerGeneticAlgorithmResults: List[DGTKSSpencerGeneticAlgorithmResult] = []
+    StateCorrelations: List[DGTKSStateCorrelations] = [DGTKSStateCorrelations()]
+    UpliftVanResults: List[DGTKSUpliftVanResult] = []
+    UpliftVanParticleSwarmResults: List[DGTKSUpliftVanParticleSwarmResult] = []
+    States: List[DGTKSStates] = [DGTKSStates()]
+    WaternetCreatorSettings: List[DGTKSWaternetCreatorSettings] = [
+        (DGTKSWaternetCreatorSettings())
     ]
-    Waternets: List[DGKTSWaternets] = [DGKTSWaternets()]
-    NailPropertiesForSoils: DGKTSNailPropertiesForSoils = DGKTSNailPropertiesForSoils()
-    ProjectInfo: DGKTSProjectInfo = DGKTSProjectInfo()
-    SoilCorrelations: DGKTSSoilCorrelations = DGKTSSoilCorrelations()
-    Soils: DGKTSSoils = DGKTSSoils()
-    SoilVisualizations: DGKTSSoilVisualizations = DGKTSSoilVisualizations()
+    Waternets: List[DGTKSWaternets] = [DGTKSWaternets()]
+    NailPropertiesForSoils: DGTKSNailPropertiesForSoils = DGTKSNailPropertiesForSoils()
+    ProjectInfo: DGTKSProjectInfo = DGTKSProjectInfo()
+    SoilCorrelations: DGTKSSoilCorrelations = DGTKSSoilCorrelations()
+    Soils: DGTKSSoils = DGTKSSoils()
+    SoilVisualizations: DGTKSSoilVisualizations = DGTKSSoilVisualizations()
 
     def serialize(self, path: str = "") -> Optional[bytes]:
         """Serialize a dstability model to a file or bytesIO object (for webservices)
@@ -211,7 +211,7 @@ class DStabilityModel(BaseModel):
                     cname = cname.split("_")[0]
 
                 try:
-                    instance = object_from_str(s, cname)
+                    instance = object_from_str(s, cname, CLASS_PREFIX_DSTABILITY)
                     iname = instance.__class__.__name__.replace(
                         CLASS_PREFIX_DSTABILITY, ""
                     )
@@ -219,7 +219,6 @@ class DStabilityModel(BaseModel):
                     if iname in [
                         "ProjectInfo",
                         "NailPropertiesForSoils",
-                        "ProjectInfo",
                         "SoilCorrelations",
                         "Soils",
                         "SoilVisualizations",
