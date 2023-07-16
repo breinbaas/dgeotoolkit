@@ -168,7 +168,7 @@ class DStabilityModel(BaseModel):
         if path is not "":
             data = in_memory.read()
             p = Path(path)
-            if p.suffix != ".stix":  # TODO > stix after debugging
+            if p.suffix != ".stix":
                 path = f"{path}.stix"
 
             with open(path, "wb") as out:

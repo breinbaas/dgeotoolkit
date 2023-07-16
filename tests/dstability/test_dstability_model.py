@@ -1,5 +1,4 @@
 from zipfile import ZipFile
-
 from dgeotoolkit.dstability.dstabilitymodel import DStabilityModel
 
 
