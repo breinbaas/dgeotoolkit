@@ -1,4 +1,6 @@
 from dgeotoolkit.models.basemodel import DGTKBaseModelPath
+from dgeotoolkit.dgeoflow.dgeoflowmodel import DGeoFlowModel
+from dgeotoolkit.shared.dataclasses import DGTKFBoundaryConditions, DGTKFMeshProperties
 
 
 def test_basemodel():

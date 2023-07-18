@@ -1,6 +1,8 @@
 from typing import List, Optional, Union, Dict
+import inspect
+import sys
 
-from ..const import NAN, CURRENT_CONTENT_VERSION
+from ..const import NAN, CURRENT_CONTENT_VERSION, DGEOFLOW_VERSION
 from ..models.basemodel import DGTKBaseModel, DGTKBaseModelPath
 
 
@@ -89,13 +91,13 @@ class DGTKFCalculation(DGTKBaseModel):
     Label: str = ""
     Notes: Optional[str] = ""
     CalculationType: str = ""
-    PipeTrajectory: DGTKFPipeTrajectory = DGTKFPipeTrajectory()
-    CriticalHeadId: Optional[str] = ""
+    PipeTrajectory: DGTKFPipeTrajectory = None
+    CriticalHeadId: Optional[str] = None
     CriticalHeadSearchSpace: DGTKFCriticalHeadSearchSpace = (
         DGTKFCriticalHeadSearchSpace()
     )
     MeshPropertiesId: str = ""
-    ResultsId: Optional[str] = ""
+    ResultsId: Optional[str] = None
 
 
 class DGTKFNodes(DGTKBaseModel):
@@ -773,8 +775,8 @@ class DGTKFProjectInfo(DGTKBaseModel):
     Date: Optional[str] = ""
     LastModified: str = ""
     Created: str = ""
-    ApplicationCreated: str = ""
-    ApplicationModified: str = ""
+    ApplicationCreated: str = DGEOFLOW_VERSION
+    ApplicationModified: str = DGEOFLOW_VERSION
     IsDataValidated: bool = True
     ContentVersion: str = CURRENT_CONTENT_VERSION
 

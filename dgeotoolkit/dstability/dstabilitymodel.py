@@ -2,13 +2,15 @@ from pydantic import BaseModel
 from zipfile import ZipFile
 from pathlib import Path
 from io import BytesIO
+import re
 
 from ..shared.dataclasses import *
 from ..shared.json_conversions import object_from_str
 from ..const import CLASS_PREFIX_DSTABILITY
+from ..models.basemodel import DGTKDSeriesModel
 
 
-class DStabilityModel(BaseModel):
+class DStabilityModel(DGTKDSeriesModel):
     # membernames should match the filenames (not the folder names because the are inconsisten (e.g. geoemtries / geometry))
     CalculationSettings: List[DGTKSCalculationSettings] = [DGTKSCalculationSettings()]
     Decorations: List[DGTKSDecorations] = [DGTKSDecorations()]
@@ -165,7 +167,7 @@ class DStabilityModel(BaseModel):
         zip.close()
         in_memory.seek(0)
 
-        if path is not "":
+        if path != "":
             data = in_memory.read()
             p = Path(path)
             if p.suffix != ".stix":
@@ -205,9 +207,14 @@ class DStabilityModel(BaseModel):
                 cname = Path(f.filename).stem.capitalize()
                 s = zip.read(f).decode(errors="ignore")
 
-                index = 0
+                # find Id and check for the highest one
+                pattern = r'"Id": "(\d+)"'
+                matches = re.findall(pattern, s)
+                for m in matches:
+                    if int(m) > result.current_id:
+                        result.current_id = int(m)
+
                 if cname.find("_") > -1:
-                    index = int(cname.split("_")[-1])
                     cname = cname.split("_")[0]
 
                 try:
