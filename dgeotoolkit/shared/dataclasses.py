@@ -151,21 +151,21 @@ class DGTKSSearchGrid(DGTKBaseModel):
     Notes: Optional[str] = ""
     BottomLeft: Optional[DGTKSPoint] = None
     Space: float = 1.0
-    NumberOfPointsInX: int = 5
-    NumberOfPointsInZ: int = 5
+    NumberOfPointsInX: int = 1
+    NumberOfPointsInZ: int = 1
 
 
 class DGTKSTangentLines(DGTKBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    BottomTangentLineZ: float = 0.0
-    Space: float = 1.0
-    NumberOfTangentLines: int = 5
+    BottomTangentLineZ: float = NAN
+    Space: float = 0.5
+    NumberOfTangentLines: int = 1
 
 
 class DGTKSSlipPlaneConstraintsBishop(DGTKBaseModel):
-    IsSizeConstraintsEnabled: bool = True
-    MinimumSlipPlaneDepth: float = 1.0
+    IsSizeConstraintsEnabled: bool = False
+    MinimumSlipPlaneDepth: float = 0.0
     MinimumSlipPlaneLength: float = 0.0
     IsZoneAConstraintsEnabled: bool = False
     XLeftZoneA: float = 0.0
@@ -177,7 +177,7 @@ class DGTKSSlipPlaneConstraintsBishop(DGTKBaseModel):
 
 class DGTKSSlipPlaneUpliftVan(DGTKBaseModel):
     FirstCircleCenter: DGTKSPoint = DGTKSPoint()
-    FirstCircleRadius: float = 0.0
+    FirstCircleRadius: float = NAN
     SecondCircleCenter: DGTKSPoint = DGTKSPoint()
 
 
@@ -190,7 +190,7 @@ class DGTKSUpliftVan(DGTKBaseModel):
 class DGTKSSearchArea(DGTKBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    TopLeft: Optional[DGTKSPoint] = DGTKSPoint()
+    TopLeft: Optional[DGTKSPoint] = None
     Width: float = 0.0
     Height: float = 0.0
 
@@ -226,14 +226,14 @@ class DGTKSUpliftVanParticleSwarm(DGTKBaseModel):
 
 class DGTKSSlipPlaneConstraintsSpencer(DGTKBaseModel):
     IsEnabled: bool = False
-    MinimumAngleBetweenSlices: float = 0.0
-    MinimumThrustLinePercentageInsideSlices: float = 0.0
+    MinimumAngleBetweenSlices: float = 120.0
+    MinimumThrustLinePercentageInsideSlices: float = 80.0
 
 
 class DGTKSSpencer(DGTKBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    SlipPlane: Optional[List[DGTKSPoint]] = []
+    SlipPlane: Optional[List[DGTKSPoint]] = None
     SlipPlaneConstraints: DGTKSSlipPlaneConstraintsSpencer = (
         DGTKSSlipPlaneConstraintsSpencer()
     )
@@ -242,12 +242,12 @@ class DGTKSSpencer(DGTKBaseModel):
 class DGTKSSpencerGenetic(DGTKBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    SlipPlaneA: Optional[List[DGTKSPoint]] = []
-    SlipPlaneB: Optional[List[DGTKSPoint]] = []
-    OptionsType: str = "Default"
+    SlipPlaneA: Optional[List[DGTKSPoint]] = None
+    SlipPlaneB: Optional[List[DGTKSPoint]] = None
     SlipPlaneConstraints: DGTKSSlipPlaneConstraintsSpencer = (
         DGTKSSlipPlaneConstraintsSpencer()
     )
+    OptionsType: str = "Default"
 
 
 class DGTKSForbiddenLine(DGTKBaseModel):
@@ -496,9 +496,9 @@ class DGTKSSuTablePoint(DGTKBaseModel):
 
 
 class DGTKSSuTable(DGTKBaseModel):
-    StrengthIncreaseExponent: float = 0.0
+    StrengthIncreaseExponent: float = 1.0
     StrengthIncreaseExponentStochasticParameter: DGTKStochasticParameter = (
-        DGTKStochasticParameter()
+        DGTKStochasticParameter(Mean=0.8)
     )
     SuTablePoints: List[DGTKSSuTablePoint] = []
     IsSuTableProbabilistic: bool = False
@@ -620,7 +620,7 @@ class DGTKSBishopResult(DGTKBaseModelPath):
 class DGTKSCalculationSettings(DGTKBaseModelPath):
     path_name: str = "calculationsettings"
     Id: str = ""
-    AnalysisType: str = ""
+    AnalysisType: str = "BishopBruteForce"
     CalculationType: str = "Deterministic"
     ModelFactorMean: float = 1.0
     ModelFactorStandardDeviation: float = 0.0
@@ -744,8 +744,16 @@ class DGTKFMeshProperties(DGTKBaseModelPath):
 #########################
 #          N            #
 #########################
+class DGTKSNailPropertyForSoils(DGTKBaseModel):
+    SoilId: str = ""
+    CompressionRatio: float = 1.0
+    RheologicalCoefficient: float = 0.0
+    AreBondStressesActive: bool = False
+    BondStresses: List[float] = []  # TODO wat is dit voor lijst?
+
+
 class DGTKSNailPropertiesForSoils(DGTKBaseModel):
-    NailPropertiesForSoils: List[Dict] = []
+    NailPropertiesForSoils: List[DGTKSNailPropertyForSoils] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
@@ -869,6 +877,40 @@ class DGTKSScenario(DGTKBaseModelPath):
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
+class DGTKSMohrCoulombClassicShearStrengthModel(DGTKBaseModel):
+    Cohesion: float = NAN
+    CohesionStochasticParameter: DGTKStochasticParameter = DGTKStochasticParameter()
+    FrictionAngle: float = NAN
+    FrictionAngleStochasticParameter: DGTKStochasticParameter = (
+        DGTKStochasticParameter()
+    )
+    CohesionAndFrictionAngleCorrelated: bool = False
+
+
+class DGTKSMohrCoulombAdvancedShearStrengthModel(DGTKBaseModel):
+    Cohesion: float = NAN
+    CohesionStochasticParameter: DGTKStochasticParameter = DGTKStochasticParameter()
+    FrictionAngle: float = NAN
+    FrictionAngleStochasticParameter: DGTKStochasticParameter = (
+        DGTKStochasticParameter()
+    )
+    CohesionAndFrictionAngleCorrelated: bool = False
+    Dilatancy: float = NAN
+    DilatancyStochasticParameter: DGTKStochasticParameter = DGTKStochasticParameter()
+
+
+class DGTKSSuShearStrengthModel(DGTKBaseModel):
+    ShearStrengthRatio: float = NAN
+    ShearStrengthRatioStochasticParameter: DGTKStochasticParameter = (
+        DGTKStochasticParameter()
+    )
+    StrengthIncreaseExponent: float = NAN
+    StrengthIncreaseExponentStochasticParameter: DGTKStochasticParameter = (
+        DGTKStochasticParameter()
+    )
+    ShearStrengthRatioAndShearStrengthExponentCorrelated: bool = False
+
+
 class DGTKSSoil(DGTKBaseModel):
     Id: str = ""
     Name: str = ""
@@ -879,24 +921,16 @@ class DGTKSSoil(DGTKBaseModel):
     VolumetricWeightBelowPhreaticLevel: float = 0.0
     ShearStrengthModelTypeAbovePhreaticLevel: str = ""
     ShearStrengthModelTypeBelowPhreaticLevel: str = ""
-    Cohesion: float = 0.0
-    CohesionStochasticParameter: DGTKStochasticParameter = DGTKStochasticParameter()
-    FrictionAngle: float = 0.0
-    FrictionAngleStochasticParameter: DGTKStochasticParameter = (
-        DGTKStochasticParameter()
+
+    MohrCoulombClassicShearStrengthModel: DGTKSMohrCoulombClassicShearStrengthModel = (
+        DGTKSMohrCoulombClassicShearStrengthModel()
     )
-    CohesionAndFrictionAngleCorrelated: bool = False
-    Dilatancy: float = 0.0
-    DilatancyStochasticParameter: DGTKStochasticParameter = DGTKStochasticParameter()
-    ShearStrengthRatio: float = 0.0
-    ShearStrengthRatioStochasticParameter: DGTKStochasticParameter = (
-        DGTKStochasticParameter()
+
+    MohrCoulombAdvancedShearStrengthModel: DGTKSMohrCoulombAdvancedShearStrengthModel = (
+        DGTKSMohrCoulombAdvancedShearStrengthModel()
     )
-    StrengthIncreaseExponent: float = 0.0
-    StrengthIncreaseExponentStochasticParameter: DGTKStochasticParameter = (
-        DGTKStochasticParameter()
-    )
-    ShearStrengthRatioAndShearStrengthExponentCorrelated: bool = False
+
+    SuShearStrengthModel: DGTKSSuShearStrengthModel = DGTKSSuShearStrengthModel()
     SuTable: DGTKSSuTable = DGTKSSuTable()
 
 

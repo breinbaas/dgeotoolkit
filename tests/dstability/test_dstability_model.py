@@ -47,3 +47,8 @@ def test_serialize_results(helpers):
     helpers.check_files(
         "tests/testdata/dstability/sample04.stix", "tests/testdata/output/sample04.stix"
     )
+
+
+def test_empty():
+    dsm = DStabilityModel.empty()
+    dsm.serialize(path="tests/testdata/output/empty.stix")
