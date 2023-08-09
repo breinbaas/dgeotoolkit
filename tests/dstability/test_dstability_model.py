@@ -57,4 +57,4 @@ def test_empty():
 def test_add_layer():
     dsm = DStabilityModel.empty()
     dsm.add_layer(points=[(0, 0), (20, 0), (20, -5), (0, -5)], soil_code="Sand")
-    dsm.serialize(path="tests/testdata/output/add_layer.stix")
+    dsm.serialize(path="tests/testdata/output/added_layer.stix")

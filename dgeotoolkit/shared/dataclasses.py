@@ -853,11 +853,6 @@ class DGTKFScenario(DGTKBaseModelPath):
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
-class DGTKFSoils(DGTKBaseModelPath):
-    Soils: List[DGTKFSoil] = []
-    ContentVersion: str = CURRENT_CONTENT_VERSION
-
-
 class DGTKFSoilVisualizations(DGTKBaseModel):
     SoilVisualizations: List[DGTKFSoilVisualization] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
@@ -930,7 +925,17 @@ class DGTKSSoil(DGTKBaseModel):
     SuTable: DGTKSSuTable = DGTKSSuTable()
 
 
-class DGTKSSoils(DGTKBaseModel):
+class DGTKSoils(DGTKBaseModel):
+    Soils: List[Union[DGTKSSoil, DGTKFSoil]] = []
+    ContentVersion: str = CURRENT_CONTENT_VERSION
+
+
+class DGTKFSoils(DGTKBaseModelPath):
+    Soils: List[DGTKFSoil] = []
+    ContentVersion: str = CURRENT_CONTENT_VERSION
+
+
+class DGTKSSoils(DGTKBaseModelPath):
     Soils: List[DGTKSSoil] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
@@ -939,7 +944,7 @@ class DGTKSoilLayers(DGTKBaseModelPath):
     Id: str = ""
     path_name: str = "soillayers"
     SoilLayers: List[DGTKSoilLayer] = []
-    Soils: DGTKSSoils = DGTKSSoils()
+    Soils: DGTKSoils = DGTKSoils()
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
