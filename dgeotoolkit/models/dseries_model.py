@@ -119,8 +119,6 @@ class DGTKDSeriesModel(BaseModel):
 
         # check if the new layer touches existing layers
 
-        i = 1
-
     def to_shapely(self) -> List[ShapelyGeometry]:
         """Convert the current geometry to a set of polygons with soil ids"""
         geometry = self._get_geometry()

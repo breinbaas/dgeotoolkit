@@ -693,3 +693,129 @@ class DStabilityModel(DGTKDSeriesModel):
             raise ValueError(f"Unknown soil code '{soil_code}'")
 
         super().add_layer(points=points, soil_id=soil.Id)
+        self.fix_consolidations()
+
+    def _get_loads_by_id(self, id: str):
+        for l in self.Loads:
+            if l.Id == id:
+                return l
+
+        raise ValueError(f"No loads with id '{id}' in this datastructure")
+
+    def _get_loads(self):
+        stage = self._get_current_stage()
+        return self._get_loads_by_id(stage.LoadsId)
+
+    def _set_loads(self, loads: DGTKSLoads):
+        for i, l in enumerate(self.Loads):
+            if l.Id == loads.Id:
+                self.Loads[i] = l
+                return
+
+        raise ValueError(
+            f"Could not set soillayers because the given id '{loads.Id}' does not correspond with a geometry id in the datastructure"
+        )
+
+    def fix_consolidations(self):
+        # TODO NEEDS TO BE TESTED STILL
+        # get all layer ids
+        geometry = self._get_geometry()
+        loads = self._get_loads()
+
+        # get all layer ids
+        layer_ids = [l.Id for l in geometry.Layers]
+
+        # add if not yet present
+        # LAYERLOADS
+        for i, load in enumerate(loads.LayerLoads):
+            # get the layer ids in the layerloads
+            layerload_cons_ids = [c.LayerId for c in load]
+
+            # find the difference to remove
+            layerload_ids_to_remove = [
+                id for id in layerload_cons_ids if id not in layer_ids
+            ]
+            for j in range(len(loads.LayerLoads[i]) - 1, -1, -1):
+                if (
+                    loads.LayerLoads[i].Consolidations[j].LayerId
+                    in layerload_ids_to_remove
+                ):
+                    loads.LayerLoads[i].Consolidations.pop(j)
+
+            # find the difference to add
+            layersload_ids_to_add = [
+                id for id in layer_ids if id not in layerload_cons_ids
+            ]
+            for id in layersload_ids_to_add:
+                loads.LayerLoads[i].Consolidations.append(
+                    DGTKSConsolidation(LayerId=id, Degree=100.0)
+                )
+
+        # UNIFORM LOAD
+        for i, load in enumerate(loads.UniformLoads):
+            # get the layer ids in the layerloads
+            uniformload_cons_ids = [c.LayerId for c in load]
+            # find the difference to remove
+            uniformload_ids_to_remove = [
+                id for id in uniformload_cons_ids if id not in layer_ids
+            ]
+            for j in range(len(loads.UniformLoads[i]) - 1, -1, -1):
+                if (
+                    loads.UniformLoads[i].Consolidations[j].LayerId
+                    in uniformload_ids_to_remove
+                ):
+                    loads.UniformLoads[i].Consolidations.pop(j)
+
+            # find the difference to add
+            uniformload_ids_to_add = [
+                id for id in layer_ids if id not in uniformload_cons_ids
+            ]
+            for id in uniformload_ids_to_add:
+                loads.UniformLoads[i].Consolidations.append(
+                    DGTKSConsolidation(LayerId=id, Degree=100.0)
+                )
+
+        # LINELOADS
+        for i, load in enumerate(loads.LineLoads):
+            # get the layer ids in the layerloads
+            lineload_cons_ids = [c.LayerId for c in load]
+            # find the difference to remove
+            lineload_ids_to_remove = [
+                id for id in lineload_cons_ids if id not in layer_ids
+            ]
+            for j in range(len(loads.LineLoads[i]) - 1, -1, -1):
+                if (
+                    loads.LineLoads[i].Consolidations[j].LayerId
+                    in lineload_ids_to_remove
+                ):
+                    loads.LineLoads[i].Consolidations.pop(j)
+
+            # find the difference to add
+            lineload_ids_to_add = [
+                id for id in layer_ids if id not in lineload_cons_ids
+            ]
+            for id in lineload_ids_to_add:
+                loads.LineLoads[i].Consolidations.append(
+                    DGTKSConsolidation(LayerId=id, Degree=100.0)
+                )
+
+        # EARTHQUAKE (ONLY ONE)
+        earthquake_cons_ids = [c.LayerId for c in loads.Earthquake.Consolidations]
+        # find the difference to remove
+        earthquake_ids_to_remove = [
+            id for id in earthquake_cons_ids if id not in layer_ids
+        ]
+        for i in range(len(loads.Earthquake.Consolidations) - 1, -1, -1):
+            if loads.Earthquake.Consolidations[i].LayerId in earthquake_ids_to_remove:
+                loads.Earthquake.Consolidations.pop(i)
+
+        # find the difference to add
+        earthquake_ids_to_add = [
+            id for id in layer_ids if id not in earthquake_cons_ids
+        ]
+        for id in earthquake_ids_to_add:
+            loads.Earthquake.Consolidations.append(
+                DGTKSConsolidation(LayerId=id, Degree=100.0)
+            )
+
+        self._set_loads(loads)
