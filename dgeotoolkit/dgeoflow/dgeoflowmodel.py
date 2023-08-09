@@ -8,15 +8,15 @@ import re
 from ..shared.dataclasses import *
 from ..shared.json_conversions import object_from_str
 from ..const import CLASS_PREFIX_DGEOFLOW, ALLOWED_PERSISTABLE_SHADING_TYPES
-from ..models.basemodel import DGTKDSeriesModel
+from ..models.dseries_model import DGTKDSeriesModel
 
 
 class DGeoFlowModel(DGTKDSeriesModel):
     BoundaryConditions: List[DGTKFBoundaryConditions] = []
-    Geometry: List[DGTKFGeometry] = []
+    Geometry: List[DGTKGeometry] = []
     MeshProperties: List[DGTKFMeshProperties] = []
     Scenario: List[DGTKFScenarios] = []
-    SoilLayers: List[DGTKFSoilLayers] = []
+    SoilLayers: List[DGTKSoilLayers] = []
 
     ProjectInfo: DGTKFProjectInfo = DGTKFProjectInfo()
     Soils: DGTKFSoils = DGTKFSoils()
@@ -185,7 +185,7 @@ class DGeoFlowModel(DGTKDSeriesModel):
     def add_soillayers(self):
         next_id = self.next_id()
         self.SoilLayers.append(
-            DGTKFSoilLayers(
+            DGTKSoilLayers(
                 Id=next_id,
             )
         )
@@ -201,6 +201,7 @@ class DGeoFlowModel(DGTKDSeriesModel):
         soillayers_id: str,
     ):
         stage = DGTKFStage(
+            Id=self.next_id(),
             Label="Stage 1",  # TODO
             Notes="",
             BoundaryConditionCollectionId=boundary_conditions_id,
@@ -387,6 +388,9 @@ class DGeoFlowModel(DGTKDSeriesModel):
             mesh_properties_id=mesh_properties_id,
             soillayers_id=soillayers_id,
         )
+
+        result._current_scenario_id = result.Scenario[0].Id
+        result._current_stage_id = result.Scenario[0].Stages[0].Id
 
         return result
 

@@ -11,12 +11,17 @@ from ..models.basemodel import DGTKBaseModel, DGTKBaseModelPath
 ####################
 
 
+##########
+# SHARED #
+##########
+class DGTKPoint(DGTKBaseModel):
+    X: float = NAN
+    Z: float = NAN
+
+
 ############
 # DGEOFLOW #
 ############
-class DGTKFPoint(DGTKBaseModel):
-    X: float = NAN
-    Z: float = NAN
 
 
 class DGTKFSoil(DGTKBaseModel):
@@ -42,17 +47,10 @@ class DGTKFBoundaryCondition(DGTKBaseModel):
     Id: str = ""
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Points: List[DGTKFPoint] = []
+    Points: List[DGTKPoint] = []
     FixedHeadBoundaryConditionProperties: DGTKFFixedHeadBoundaryConditionProperties = (
         DGTKFFixedHeadBoundaryConditionProperties()
     )
-
-
-class DGTKFLayer(DGTKBaseModel):
-    Id: str = ""
-    Label: Optional[str] = ""
-    Notes: Optional[str] = ""
-    Points: List[DGTKFPoint] = []
 
 
 class DGTKFMeshProperty(DGTKBaseModel):
@@ -62,6 +60,7 @@ class DGTKFMeshProperty(DGTKBaseModel):
 
 
 class DGTKFStage(DGTKBaseModel):
+    Id: str = ""
     Label: str = ""
     Notes: Optional[str] = ""
     BoundaryConditionCollectionId: str = ""
@@ -73,7 +72,7 @@ class DGTKFPipeTrajectory(DGTKBaseModel):
     D70: float = NAN
     ElementSize: float = NAN
     ErosionDirection: str = ""
-    Points: List[DGTKFPoint] = []
+    Points: List[DGTKPoint] = []
 
 
 class DGTKFCriticalHeadSearchSpace(DGTKBaseModel):
@@ -101,13 +100,13 @@ class DGTKFCalculation(DGTKBaseModel):
 
 
 class DGTKFNodes(DGTKBaseModel):
-    Nodes: List[DGTKFPoint] = []
+    Nodes: List[DGTKPoint] = []
     IsActive: bool = False
     Height: float = NAN
 
 
 class DGTKFNodeResult(DGTKBaseModel):
-    Point: DGTKFPoint = DGTKFPoint()
+    Point: DGTKPoint = DGTKPoint()
     TotalPorePressure: float = NAN
     HydraulicDischarge: float = NAN
     HydraulicHead: float = NAN
@@ -120,13 +119,8 @@ class DGTKFElement(DGTKBaseModel):
 ##############
 # DSTABILITY #
 ##############
-class DGTKSPoint(DGTKBaseModel):
-    X: float = NAN
-    Z: float = NAN
-
-
 class DGTKSCircle(DGTKBaseModel):
-    Center: DGTKSPoint = DGTKSPoint()
+    Center: DGTKPoint = DGTKPoint()
     Radius: float = NAN
 
 
@@ -139,17 +133,25 @@ class DGTKSGridEnhancements(DGTKBaseModel):
     ExtrapolateSearchSpace: bool = True
 
 
-class DGTKSLayer(DGTKBaseModel):
+class DGTKLayer(DGTKBaseModel):
     Id: str = ""
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Points: List[DGTKSPoint] = []
+    Points: List[DGTKPoint] = []
+
+
+class DGTKSLayer(DGTKLayer):
+    pass
+
+
+class DGTKFLayer(DGTKLayer):
+    pass
 
 
 class DGTKSSearchGrid(DGTKBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    BottomLeft: Optional[DGTKSPoint] = None
+    BottomLeft: Optional[DGTKPoint] = None
     Space: float = 1.0
     NumberOfPointsInX: int = 1
     NumberOfPointsInZ: int = 1
@@ -176,9 +178,9 @@ class DGTKSSlipPlaneConstraintsBishop(DGTKBaseModel):
 
 
 class DGTKSSlipPlaneUpliftVan(DGTKBaseModel):
-    FirstCircleCenter: DGTKSPoint = DGTKSPoint()
+    FirstCircleCenter: DGTKPoint = DGTKPoint()
     FirstCircleRadius: float = NAN
-    SecondCircleCenter: DGTKSPoint = DGTKSPoint()
+    SecondCircleCenter: DGTKPoint = DGTKPoint()
 
 
 class DGTKSUpliftVan(DGTKBaseModel):
@@ -190,7 +192,7 @@ class DGTKSUpliftVan(DGTKBaseModel):
 class DGTKSSearchArea(DGTKBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    TopLeft: Optional[DGTKSPoint] = None
+    TopLeft: Optional[DGTKPoint] = None
     Width: float = 0.0
     Height: float = 0.0
 
@@ -233,7 +235,7 @@ class DGTKSSlipPlaneConstraintsSpencer(DGTKBaseModel):
 class DGTKSSpencer(DGTKBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    SlipPlane: Optional[List[DGTKSPoint]] = None
+    SlipPlane: Optional[List[DGTKPoint]] = None
     SlipPlaneConstraints: DGTKSSlipPlaneConstraintsSpencer = (
         DGTKSSlipPlaneConstraintsSpencer()
     )
@@ -242,8 +244,8 @@ class DGTKSSpencer(DGTKBaseModel):
 class DGTKSSpencerGenetic(DGTKBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    SlipPlaneA: Optional[List[DGTKSPoint]] = None
-    SlipPlaneB: Optional[List[DGTKSPoint]] = None
+    SlipPlaneA: Optional[List[DGTKPoint]] = None
+    SlipPlaneB: Optional[List[DGTKPoint]] = None
     SlipPlaneConstraints: DGTKSSlipPlaneConstraintsSpencer = (
         DGTKSSlipPlaneConstraintsSpencer()
     )
@@ -253,15 +255,15 @@ class DGTKSSpencerGenetic(DGTKBaseModel):
 class DGTKSForbiddenLine(DGTKBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Start: DGTKSPoint = DGTKSPoint()
-    End: DGTKSPoint = DGTKSPoint()
+    Start: DGTKPoint = DGTKPoint()
+    End: DGTKPoint = DGTKPoint()
 
 
 class DGTKSGeotextile(DGTKBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Start: DGTKSPoint = DGTKSPoint()
-    End: DGTKSPoint = DGTKSPoint()
+    Start: DGTKPoint = DGTKPoint()
+    End: DGTKPoint = DGTKPoint()
     TensileStrength: float = 0.0
     ReductionArea: float = 0.0
 
@@ -274,7 +276,7 @@ class DGTKSStress(DGTKBaseModel):
 class DGTKSNail(DGTKBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Location: DGTKSPoint = DGTKSPoint()
+    Location: DGTKPoint = DGTKPoint()
     Direction: float = 0.0
     HorizontalSpacing: float = 0.0
     Length: float = 3.0
@@ -315,7 +317,7 @@ class DGTKSStatePoint(DGTKBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
     IsProbabilistic: bool = True
-    Point: DGTKSPoint = DGTKSPoint()
+    Point: DGTKPoint = DGTKPoint()
     Stress: DGTKSStateStress = DGTKSStateStress()
 
 
@@ -331,7 +333,7 @@ class DGTKSStateLineValue(DGTKBaseModel):
 
 
 class DGTKSStateLine(DGTKBaseModel):
-    Points: List[DGTKSPoint] = []
+    Points: List[DGTKPoint] = []
     Values: List[DGTKSStateLineValue] = []
 
 
@@ -344,10 +346,10 @@ class DGTKSSpencerSlice(DGTKBaseModel):
     RightForceAngle: float = NAN
     ArcLength: float = NAN
     BottomAngle: float = NAN
-    BottomLeft: DGTKSPoint = DGTKSPoint()
-    BottomRight: DGTKSPoint = DGTKSPoint()
-    TopLeft: DGTKSPoint = DGTKSPoint()
-    TopRight: DGTKSPoint = DGTKSPoint()
+    BottomLeft: DGTKPoint = DGTKPoint()
+    BottomRight: DGTKPoint = DGTKPoint()
+    TopLeft: DGTKPoint = DGTKPoint()
+    TopRight: DGTKPoint = DGTKPoint()
     CohesionInput: float = NAN
     DegreeOfConsolidationLoadPorePressure: float = NAN
     DegreeOfConsolidationPorePressure: float = NAN
@@ -387,10 +389,10 @@ class DGTKSSpencerSlice(DGTKBaseModel):
 class DGTKSUpliftVanSlice(DGTKBaseModel):
     ArcLength: float = NAN
     BottomAngle: float = NAN
-    BottomLeft: DGTKSPoint = DGTKSPoint()
-    BottomRight: DGTKSPoint = DGTKSPoint()
-    TopLeft: DGTKSPoint = DGTKSPoint()
-    TopRight: DGTKSPoint = DGTKSPoint()
+    BottomLeft: DGTKPoint = DGTKPoint()
+    BottomRight: DGTKPoint = DGTKPoint()
+    TopLeft: DGTKPoint = DGTKPoint()
+    TopRight: DGTKPoint = DGTKPoint()
     CohesionInput: float = NAN
     DegreeOfConsolidationLoadPorePressure: float = NAN
     DegreeOfConsolidationPorePressure: float = NAN
@@ -430,10 +432,10 @@ class DGTKSUpliftVanSlice(DGTKBaseModel):
 class DGTKSBishopSlice(DGTKBaseModel):
     ArcLength: float = NAN
     BottomAngle: float = NAN
-    BottomLeft: DGTKSPoint = DGTKSPoint()
-    BottomRight: DGTKSPoint = DGTKSPoint()
-    TopLeft: DGTKSPoint = DGTKSPoint()
-    TopRight: DGTKSPoint = DGTKSPoint()
+    BottomLeft: DGTKPoint = DGTKPoint()
+    BottomRight: DGTKPoint = DGTKPoint()
+    TopLeft: DGTKPoint = DGTKPoint()
+    TopRight: DGTKPoint = DGTKPoint()
     CohesionInput: float = 0.0
     DegreeOfConsolidationLoadPorePressure: float = 0.0
     DegreeOfConsolidationPorePressure: float = 0.0
@@ -470,7 +472,7 @@ class DGTKSBishopSlice(DGTKBaseModel):
     ShearStrengthModelType: str = "CPhi"
 
 
-class DGTKSSoilLayerConnection(DGTKBaseModel):
+class DGTKSoilLayer(DGTKBaseModel):
     LayerId: str = ""
     SoilId: str = ""
 
@@ -509,7 +511,7 @@ class DGTKSHeadLine(DGTKBaseModel):
     Id: str = ""
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Points: List[DGTKSPoint] = []
+    Points: List[DGTKPoint] = []
 
 
 class DGTKSReferenceLine(DGTKBaseModel):
@@ -518,7 +520,7 @@ class DGTKSReferenceLine(DGTKBaseModel):
     Notes: Optional[str] = ""
     TopHeadLineId: str = ""
     BottomHeadLineId: str = ""
-    Points: List[DGTKSPoint] = []
+    Points: List[DGTKPoint] = []
 
 
 class DGTKSStage(DGTKBaseModel):
@@ -547,13 +549,13 @@ class DGTKSCalculation(DGTKBaseModel):
 class DGTKSExcavation(DGTKBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Points: List[DGTKSPoint] = []
+    Points: List[DGTKPoint] = []
 
 
 class DGTKSElevation(DGTKBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Points: List[DGTKSPoint] = []
+    Points: List[DGTKPoint] = []
     AddedLayerId: str = ""
 
 
@@ -563,7 +565,7 @@ class DGTKSTree(DGTKBaseModel):
     Force: float = 0.0
     RootZoneWidth: float = 5.0
     Spread: float = 0.0
-    Location: DGTKSPoint = DGTKSPoint()
+    Location: DGTKPoint = DGTKPoint()
 
 
 #########################
@@ -601,7 +603,7 @@ class DGTKSBishopBruteForceResult(DGTKBaseModelPath):
     Circle: DGTKSCircle = DGTKSCircle()
     Id: str = ""
     FactorOfSafety: float = 0.0
-    Points: List[DGTKSPoint] = []
+    Points: List[DGTKPoint] = []
     Slices: List[DGTKSBishopSlice] = []
 
 
@@ -610,7 +612,7 @@ class DGTKSBishopResult(DGTKBaseModelPath):
     Circle: DGTKSCircle = DGTKSCircle()
     Id: str = ""
     FactorOfSafety: float = 0.0
-    Points: List[DGTKSPoint] = []
+    Points: List[DGTKPoint] = []
     Slices: List[DGTKSBishopSlice] = []
 
 
@@ -665,23 +667,24 @@ class DGTKSEarthquake(DGTKBaseModel):
 #########################
 #          G            #
 #########################
-class DGTKFGeometry(DGTKBaseModelPath):
+class DGTKGeometry(DGTKBaseModelPath):
     path_name: str = "geometries"
     Id: str = ""
-    Layers: List[DGTKFLayer] = []
+    Layers: List[DGTKLayer] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
+
+
+class DGTKSGeometry(DGTKGeometry):
+    pass
+
+
+class DGTKFGeometry(DGTKGeometry):
+    pass
 
 
 class DGTKFGroundWaterFlowResult(DGTKBaseModel):
     Id: str = ""
     Elements: List[DGTKFElement] = []
-    ContentVersion: str = CURRENT_CONTENT_VERSION
-
-
-class DGTKSGeometry(DGTKBaseModelPath):
-    path_name: str = "geometries"
-    Id: str = ""
-    Layers: List[DGTKSLayer] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
@@ -713,7 +716,7 @@ class DGTKSLayerLoad(DGTKBaseModel):
 class DGTKSLineLoad(DGTKBaseModel):
     Label: Optional[str] = ""
     Notes: Optional[str] = ""
-    Location: DGTKSPoint = DGTKSPoint()
+    Location: DGTKPoint = DGTKPoint()
     Magnitude: float = 10.0
     Spread: float = 0.0
     Angle: float = 0.0
@@ -850,13 +853,6 @@ class DGTKFScenario(DGTKBaseModelPath):
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
-class DGTKFSoilLayers(DGTKBaseModelPath):
-    path_name: str = "soillayers"
-    Id: str = ""
-    SoilLayers: List[DGTKFSoilLayer] = []
-    ContentVersion: str = CURRENT_CONTENT_VERSION
-
-
 class DGTKFSoils(DGTKBaseModelPath):
     Soils: List[DGTKFSoil] = []
     ContentVersion: str = CURRENT_CONTENT_VERSION
@@ -939,11 +935,20 @@ class DGTKSSoils(DGTKBaseModel):
     ContentVersion: str = CURRENT_CONTENT_VERSION
 
 
-class DGTKSSoilLayers(DGTKBaseModelPath):
+class DGTKSoilLayers(DGTKBaseModelPath):
     Id: str = ""
     path_name: str = "soillayers"
-    SoilLayers: List[DGTKSSoilLayerConnection] = []
+    SoilLayers: List[DGTKSoilLayer] = []
+    Soils: DGTKSSoils = DGTKSSoils()
     ContentVersion: str = CURRENT_CONTENT_VERSION
+
+
+class DGTKSSoilLayers(DGTKSoilLayers):
+    pass
+
+
+class DGTKFSoilLayers(DGTKSoilLayers):
+    pass
 
 
 class DGTKSSoilCorrelations(DGTKBaseModel):
@@ -964,19 +969,19 @@ class DGTKSSoilVisualizations(DGTKBaseModel):
 
 class DGTKSSpencerResult(DGTKBaseModelPath):
     path_name: str = "results/spencer"
-    SlipPlane: List[DGTKSPoint] = []
+    SlipPlane: List[DGTKPoint] = []
     Id: str = ""
     FactorOfSafety: float = 0.0
-    Points: List[DGTKSPoint] = []
+    Points: List[DGTKPoint] = []
     Slices: List[DGTKSSpencerSlice] = []
 
 
 class DGTKSSpencerGeneticAlgorithmResult(DGTKBaseModelPath):
     path_name: str = "results/spencergeneticalgorithm"
-    SlipPlane: List[DGTKSPoint] = []
+    SlipPlane: List[DGTKPoint] = []
     Id: str = ""
     FactorOfSafety: float = 0.0
-    Points: List[DGTKSPoint] = []
+    Points: List[DGTKPoint] = []
     Slices: List[DGTKSSpencerSlice] = []
 
 
@@ -1017,23 +1022,23 @@ class DGTKSUniformLoad(DGTKBaseModel):
 
 class DGTKSUpliftVanResult(DGTKBaseModelPath):
     path_name: str = "results/upliftvan"
-    LeftCenter: DGTKSPoint = DGTKSPoint()
-    RightCenter: DGTKSPoint = DGTKSPoint()
+    LeftCenter: DGTKPoint = DGTKPoint()
+    RightCenter: DGTKPoint = DGTKPoint()
     TangentLine: float = NAN
     Id: str = ""
     FactorOfSafety: float = 0.0
-    Points: List[DGTKSPoint] = []
+    Points: List[DGTKPoint] = []
     Slices: List[DGTKSUpliftVanSlice] = []
 
 
 class DGTKSUpliftVanParticleSwarmResult(DGTKBaseModelPath):
     path_name: str = "results/upliftvanparticleswarm"
-    LeftCenter: DGTKSPoint = DGTKSPoint()
-    RightCenter: DGTKSPoint = DGTKSPoint()
+    LeftCenter: DGTKPoint = DGTKPoint()
+    RightCenter: DGTKPoint = DGTKPoint()
     TangentLine: float = NAN
     Id: str = ""
     FactorOfSafety: float = 0.0
-    Points: List[DGTKSPoint] = []
+    Points: List[DGTKPoint] = []
     Slices: List[DGTKSUpliftVanSlice] = []
 
 
@@ -1067,7 +1072,7 @@ class DGTKSWaternetCreatorSettings(DGTKBaseModelPath):
     OffsetShoulderBaseLandSide: float = NAN
     OffsetEmbankmentToeLandSide: float = NAN
     IsDrainageConstructionPresent: bool = False
-    DrainageConstruction: DGTKSPoint = DGTKSPoint()
+    DrainageConstruction: DGTKPoint = DGTKPoint()
     AquiferLayerId: Optional[str] = None
     AquiferInsideAquitardLayerId: Optional[str] = None
     AdjustForUplift: bool = False

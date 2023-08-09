@@ -1,15 +1,4 @@
 from pydantic import BaseModel
-import inspect
-from ..helpers import _next_id
-
-
-class DGTKDSeriesModel(BaseModel):
-    current_id: int = 0
-
-    def next_id(self) -> int:
-        """Generate the next id based on the current model"""
-        self.current_id += 1
-        return str(self.current_id)
 
 
 class DGTKBaseModel(BaseModel):

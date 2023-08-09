@@ -4,24 +4,28 @@ from pathlib import Path
 from io import BytesIO
 import re
 from datetime import datetime
+from typing import List, Tuple
 
 from ..shared.dataclasses import *
 from ..shared.json_conversions import object_from_str
 from ..const import CLASS_PREFIX_DSTABILITY, DSTABILITY_VERSION
-from ..models.basemodel import DGTKDSeriesModel
+from ..models.dseries_model import DGTKDSeriesModel
 
 
 class DStabilityModel(DGTKDSeriesModel):
+    _current_scenario_id: str = ""
+    _current_stage_id: str = ""
+
     # membernames should match the filenames (not the folder names because the are inconsisten (e.g. geoemtries / geometry))
     CalculationSettings: List[DGTKSCalculationSettings] = [DGTKSCalculationSettings()]
     Decorations: List[DGTKSDecorations] = [DGTKSDecorations()]
-    Geometry: List[DGTKSGeometry] = [DGTKSGeometry()]
+    Geometry: List[DGTKGeometry] = [DGTKGeometry()]
     Loads: List[DGTKSLoads] = [DGTKSLoads()]
     Reinforcements: List[DGTKSReinforcements] = [DGTKSReinforcements()]
     BishopResults: List[DGTKSBishopResult] = []
     BishopBruteForceResults: DGTKSBishopBruteForceResult = []
     Scenario: List[DGTKSScenario] = [DGTKSScenario()]
-    SoilLayers: List[DGTKSSoilLayers] = [DGTKSSoilLayers()]
+    SoilLayers: List[DGTKSoilLayers] = [DGTKSoilLayers()]
     SpencerResults: List[DGTKSSpencer] = []
     SpencerGeneticAlgorithmResults: List[DGTKSSpencerGeneticAlgorithmResult] = []
     StateCorrelations: List[DGTKSStateCorrelations] = [DGTKSStateCorrelations()]
@@ -417,7 +421,6 @@ class DStabilityModel(DGTKDSeriesModel):
             persitable_shading_type="DiagonalD",
         )
 
-        # CALCULATIONSETTINGS
         result.CalculationSettings[0].Id = result.next_id()
         result.Decorations[0].Id = result.next_id()
         result.Geometry[0].Id = result.next_id()
@@ -451,6 +454,9 @@ class DStabilityModel(DGTKDSeriesModel):
                 ReinforcementsId=result.Reinforcements[0].Id,
             )
         )
+
+        result._current_scenario_id = result.Scenario[0].Id
+        result._current_stage_id = result.Scenario[0].Stages[0].Id
 
         return result
 
@@ -593,6 +599,7 @@ class DStabilityModel(DGTKDSeriesModel):
 
                 try:
                     instance = object_from_str(s, cname, CLASS_PREFIX_DSTABILITY)
+
                     iname = instance.__class__.__name__.replace(
                         CLASS_PREFIX_DSTABILITY, ""
                     )
@@ -673,3 +680,16 @@ class DStabilityModel(DGTKDSeriesModel):
             result.UpliftVanParticleSwarmResults = upliftvanparticleswarmresults
 
         return result
+
+    def add_layer(self, points: List[Tuple[float, float]], soil_code: str):
+        # check if we have that soil model
+        soil = None
+        for s in self.Soils.Soils:
+            if s.Code == soil_code:
+                soil = s
+                break
+
+        if soil is None:
+            raise ValueError(f"Unknown soil code '{soil_code}'")
+
+        super().add_layer(points=points, soil_id=soil.Id)
