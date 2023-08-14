@@ -716,13 +716,17 @@ class DStabilityModel(DGTKDSeriesModel):
             f"Could not set soillayers because the given id '{loads.Id}' does not correspond with a geometry id in the datastructure"
         )
 
-    def fix_consolidations(self):
+    def _update_relations(self, old_layer_ids: List[str]) -> None:
+        super()._update_relations(old_layer_ids)
+        self._fix_loads(old_layer_ids)
+
+    def _fix_loads(self, old_layer_ids: List[str]):
         # TODO NEEDS TO BE TESTED STILL
         # get all layer ids
         geometry = self._get_geometry()
         loads = self._get_loads()
 
-        # get all layer ids
+        # get current layer ids
         layer_ids = [l.Id for l in geometry.Layers]
 
         # add if not yet present

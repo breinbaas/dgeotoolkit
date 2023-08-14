@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Tuple
 from shapely.geometry import Polygon
+from shapely.ops import unary_union
 
 from ..shared.dataclasses import (
     DGTKGeometry,
@@ -16,10 +17,12 @@ class ShapelyGeometry:
         self,
         points: List[Tuple[float, float]],
         soil_id: str,
+        layer_id: str = "",
         label: str = "",
     ):
         self.polygon = Polygon(points)
         self.soil_id = soil_id
+        self.layer_id = layer_id
         self.label = label
 
 
@@ -28,6 +31,9 @@ class DGTKDSeriesModel(BaseModel):
 
     Geometry: List[DGTKGeometry] = []
     SoilLayers: List[DGTKSoilLayers] = []
+
+    def _update_relations(self, old_layer_ids: List[str]) -> None:
+        pass
 
     def next_id(self) -> int:
         """Generate the next id based on the current model"""
@@ -109,6 +115,10 @@ class DGTKDSeriesModel(BaseModel):
             f"Could not set soillayers because the given id '{soillayers.Id}' does not correspond with a geometry id in the datastructure"
         )
 
+    def to_one_polygon(self):
+        polygons = self.to_shapely()
+        return unary_union([p.polygon for p in polygons])
+
     def add_layer(self, points: List[Tuple[float, float]], soil_id: str):
         polygons = self.to_shapely()
 
@@ -117,7 +127,18 @@ class DGTKDSeriesModel(BaseModel):
             self.to_geometry(polygons)
             return
 
-        # check if the new layer touches existing layers
+        # multiple layers, check if the new layer touches existing layers
+        new_poly = Polygon(points)
+        # first create a overlapping polygon from all polygons
+        all_poly = self.to_one_polygon()
+        # see if it touches at least at one point
+        if not new_poly.intersects(all_poly):
+            raise ValueError(
+                "Trying to add a layer that not touches any of the other layers."
+            )
+
+        polygons.append(ShapelyGeometry(points=points, soil_id=soil_id))
+        self.to_geometry(polygons)
 
     def to_shapely(self) -> List[ShapelyGeometry]:
         """Convert the current geometry to a set of polygons with soil ids"""
@@ -130,7 +151,11 @@ class DGTKDSeriesModel(BaseModel):
                 if s.LayerId == l.Id:
                     soil_id = s.SoilId
             polygons.append(
-                ShapelyGeometry(points=[(p.X, p.Z) for p in l.Points], soil_id=soil_id)
+                ShapelyGeometry(
+                    points=[(p.X, p.Z) for p in l.Points],
+                    soil_id=soil_id,
+                    layer_id=l.Id,
+                )
             )
 
         return polygons
@@ -138,14 +163,15 @@ class DGTKDSeriesModel(BaseModel):
     def to_geometry(self, polygons):
         """Convert the polygons to the current geometry"""
         geometry = self._get_geometry()
-        geometry.Layers = []
-
         soillayers = self._get_soillayers()
+        existing_layer_ids = [l.Id for l in geometry.Layers]
+
+        geometry.Layers = []
+        soillayers.SoilLayers.clear()
 
         for geom in polygons:
             xx, zz = geom.polygon.exterior.coords.xy
             layer_id = self.next_id()
-            # note that shapely polygons are closed but dstab polygon are not
             geometry.Layers.append(
                 DGTKLayer(
                     Id=layer_id,
@@ -157,8 +183,9 @@ class DGTKDSeriesModel(BaseModel):
                 DGTKSoilLayer(LayerId=layer_id, SoilId=geom.soil_id)
             )
 
-        # TODO > wat als er een load is, moet dan ook de cons ingesteld worden?
-        # TODO > idem voor andere afhankelijkheden
-
+        # Make sure to do other housekeeping from the child class
         self._set_geometry(geometry)
         self._set_soillayers(soillayers)
+        # call the child function to update relationships that
+        # are not handled in this class
+        self._update_relations(existing_layer_ids)

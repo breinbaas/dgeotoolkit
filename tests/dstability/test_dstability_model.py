@@ -1,3 +1,5 @@
+import pytest
+
 from dgeotoolkit.dstability.dstabilitymodel import DStabilityModel
 
 
@@ -58,3 +60,25 @@ def test_add_layer():
     dsm = DStabilityModel.empty()
     dsm.add_layer(points=[(0, 0), (20, 0), (20, -5), (0, -5)], soil_code="Sand")
     dsm.serialize(path="tests/testdata/output/added_layer.stix")
+
+
+def test_add_layer_two_layers_touching():
+    dsm = DStabilityModel.empty()
+    dsm.add_layer(points=[(0, 0), (20, 0), (20, -5), (0, -5)], soil_code="Sand")
+    dsm.add_layer(points=[(0, 2), (20, 2), (20, 0), (0, 0)], soil_code="H_Aa_ht_old")
+    dsm.serialize(path="tests/testdata/output/added_two_layers.stix")
+
+
+def test_add_layer_two_layers_not_touching_raises():
+    dsm = DStabilityModel.empty()
+    dsm.add_layer(points=[(0, 0), (20, 0), (20, -5), (0, -5)], soil_code="Sand")
+    with pytest.raises(ValueError):
+        dsm.add_layer(
+            points=[(0, 2), (20, 2), (20, 1), (0, 1)], soil_code="H_Aa_ht_old"
+        )
+
+
+def test_add_layer_sharing_one_point():
+    dsm = DStabilityModel.empty()
+    dsm.add_layer(points=[(0, 0), (20, 0), (20, -5), (0, -5)], soil_code="Sand")
+    dsm.add_layer(points=[(0, -5), (-5, -5), (-2, -10)], soil_code="H_Aa_ht_old")
